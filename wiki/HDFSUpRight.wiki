@@ -1,11 +1,11 @@
-#summary One-sentence summary of this page.
+#summary Introduction and manual of HDFS-UpRight
 
 = Introduction =
 
-Add your content here.
+HDFS-UpRight is a high-available version of [http://hadoop.apache.org/core/docs/current/hdfs_design.html HDFS]
 
 
-= Details =
+= Getting Started =
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
