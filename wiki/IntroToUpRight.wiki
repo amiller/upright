@@ -1,4 +1,4 @@
-#An introduction to the UpRight project
+#summary An introduction to the UpRight project
 
 = Introduction =
 
