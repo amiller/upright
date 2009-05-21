@@ -1,0 +1,8 @@
+#summary Writing programs with UpRight
+
+To use UpRight, the application must implement a set of interface functions. This page gives a brief view of the interface functions. For details, please see the JavaDoc. And here is an example application of how to implement these interfaces.
+
+= Server Interface =
+  The application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface
+
+  * MainAppCPInterface.execAsync: execute a request
