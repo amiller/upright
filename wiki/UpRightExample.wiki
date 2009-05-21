@@ -77,8 +77,63 @@ public class HTRequest {
 }
 }}}
 
+{{{
+package Applications.hashtable;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
+import Applications.hashtable.HTRequest.ht_req_type;
+
+public class HTReply {
+
+        boolean error;
+        int value;
+
+        HTReply(Boolean err, int val){
+                error = err;
+                value = val;
+        }
+
+        HTReply(){
+
+        }
+
+        public static HTReply getHTReplyFromBytes(byte[] bytes){
+                HTReply ret = new HTReply();
+                ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+                DataInputStream dis = new DataInputStream(bais);
+                try{
+                        ret.error = dis.readBoolean();
+                        ret.value = dis.readInt();
+                }catch(IOException e){
+                        System.err.println(e.getLocalizedMessage());
+                        System.exit(-1);
+                }
+
+                return ret;
+        }
+
+        public byte[] toBytes(){
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                DataOutput dataOutput = new DataOutputStream(baos);
+                try{
+                        dataOutput.writeBoolean(error);
+                        dataOutput.writeInt(value);
+                }catch(IOException e){
+                        System.err.println(e.getLocalizedMessage());
+                        System.exit(-1);
+                }
+
+                return baos.toByteArray();
+        }
+
+}
+}}}
 =Application Client=
 {{{
 package Applications.hashtable;
