@@ -2,6 +2,83 @@
 
 This example provides a remote hashtable, in which the client can set or get a key-value pair on the server.
 
+=Define request and reply formats=
+{{{
+package Applications.hashtable;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+public class HTRequest {
+        enum ht_req_type {READ, WRITE};
+        ht_req_type type;
+        String key;
+        int value;
+
+        HTRequest(ht_req_type type, String key,int val){
+                this.type = type;
+                this.key = key;
+                if(type == ht_req_type.WRITE){
+                        value = val;
+                }
+        }
+
+        private HTRequest(){
+
+        }
+
+        public static HTRequest getHTReqeustFromBytes(byte[] bytes){
+                HTRequest ret = new HTRequest();
+                ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+                DataInputStream dis = new DataInputStream(bais);
+                try{
+                        if(dis.readBoolean()){
+                                ret.type = ht_req_type.WRITE;
+                                ret.key = dis.readUTF();
+                                ret.value = dis.readInt();
+                        } else {
+                                ret.type = ht_req_type.READ;
+                                ret.key = dis.readUTF();
+                        }
+                }catch(IOException e){
+                        System.err.println(e.getLocalizedMessage());
+                        System.exit(-1);
+                }
+
+                return ret;
+        }
+
+        public byte[] toBytes(){
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                DataOutput dataOutput = new DataOutputStream(baos);
+                try{
+                        if(type == ht_req_type.WRITE){
+                                dataOutput.writeBoolean(true);
+                                dataOutput.writeUTF(key);
+                                dataOutput.writeInt(value);
+                        }else{
+                                dataOutput.writeBoolean(false);
+                                dataOutput.writeUTF(key);
+                        }
+
+                }catch(IOException e){
+                        System.err.println(e.getLocalizedMessage());
+                        System.exit(-1);
+                }
+
+                return baos.toByteArray();
+        }
+
+}
+}}}
+
+
+
 =Application Client=
 {{{
 package Applications.hashtable;
