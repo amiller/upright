@@ -1,0 +1,33 @@
+#summary A simple example of how to implement the upright interfaces.
+
+This example provides a remote hashtable, in which the client can set or get a key-value pair on the server.
+
+=Application Client=
+{{{
+public class HTClient{
+        ClientShimBaseNode clientShim;
+        public HTClient(String membership, int id){
+                clientShim = new ClientShimBaseNode(membership, id);
+                clientShim.setNetwork(new TCPNetwork(clientShim));
+                clientShim.start();
+        }
+
+        public void write(String key, int value)
+        {
+                 HTRequest req = new HTRequest(ht_req_type.WRITE, key, value);
+                 HTReply rep = HTReply.getHTReplyFromBytes(clientShim.execute(req.toBytes()));
+                 if(rep.error){
+                        throw new RuntimeException("Write failed");
+                 }
+        }
+
+        public int read(String key){
+                HTRequest req = new HTRequest(ht_req_type.READ, key, 0);
+                HTReply rep = HTReply.getHTReplyFromBytes(clientShim.execute(req.toBytes()));
+                if(rep.error){
+                      throw new RuntimeException("Read failed");
+                }
+                return rep.value;
+        }
+    }
+}}}
