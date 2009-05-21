@@ -4,7 +4,7 @@ First, you need to decide how many and what kinds of faults the system need to t
 
 = Configuration =
 
-The following is a very simple example of configuration file. It contains one ordered node (l=c=1), two execution nodes (l=0 c=1) and one client.
+The following is a very simple example of configuration file. It contains one ordered node (l=c=0), two execution nodes (l=0 c=1) and one client.
 
 {{{
 orderCrashFailures = 0
