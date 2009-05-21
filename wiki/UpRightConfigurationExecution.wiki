@@ -37,3 +37,6 @@ The private key file must have the correct name. For example, the file for execu
 
 =Generate Configuration Files=
 The configuration files seem to be complex? Don't be afraid. We have provided a tool to generate all these files. All you have to do is to decide how many crashes you want to tolerate and which machines you want to use. The tool will generate all the keys, ports and private key files for you.
+
+=Run UpRight=
+.......
