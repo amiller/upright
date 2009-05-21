@@ -204,9 +204,9 @@ public class HTSingleApp implements MainAppCPInterface, BackupAppCPInterface{
 
         DataOutputStream log;
         String logfile;
-    DataOutputStream sync;
+        DataOutputStream sync;
         String syncfile;
-    int syncCounter;
+        int syncCounter;
 
         private String log_prefix=null;
         private String sync_prefix=null;
@@ -341,6 +341,7 @@ public class HTSingleApp implements MainAppCPInterface, BackupAppCPInterface{
 
         }
 
+        @Override
         public void sync() {
             try {
                 ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(sync_prefix+syncfile));
