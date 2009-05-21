@@ -3,7 +3,7 @@
 To use UpRight, the application must implement a set of interface functions. This page gives a brief view of the interface functions. For details, please see the JavaDoc. And here is an example application of how to implement these interfaces.
 
 = Application Server =
-UpRight requires two instances of application servers: the main instance for executing requests and writing request to log files and the backup instance for merging the logs into a big snapshot file. Correspondingly, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface.
+UpRight requires two instances of application servers: the main instance for executing requests and writing request to log files and the backup instance for merging the logs into a big snapshot file. Correspondingly, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface. All the interface functions are asynchronous, so the application server should call the callback functions after finishing the execution.
 
   * MainAppCPInterface.execAsync: execute a request. After finished, the application should call CPAppInterface.execDone to send the result back.
   * MainAppCPInterface.flushAndStartNewLog: flush the current log file and start a new one. Call CPAppInterface.flushDone to give the log file to UpRight and this log file should never be modified, renamed or deleted in the future.
@@ -13,3 +13,7 @@ UpRight requires two instances of application servers: the main instance for exe
   * BackupAppCPInterface.consumeLog: read the log and replay the requests in the log. The implementation should be similar to MainAppCPInterface.consumeLog, but remember this is executed in the backup instance. Also call CPAppInterface.consumeLogDone when finished.
   * BackupAppCPInterface.sync: write all the application states into a snapshot file. Call CPAppInterface.syncDone when finished.
   * BackupAppCPInterface.loadSnapshot: similar to MainAppCPInterface.loadSnapshot.
+
+==Notices==
+  * Never modify a log file or a snapshot file after returning it to UpRight.
+  * The application must provide determined log and snapshot files. This means that after executing the same sequence of requests, the server should give the same log and snapshot file. There should be no randomness in these files. In reality, time, multi thread, etc, can cause non-determinisms and they should be carefully avoided.
