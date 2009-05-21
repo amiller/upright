@@ -1,12 +1,5 @@
 #summary An introduction to the UpRight project
 
-= Introduction =
+= Introduction to UpRight=
 
-UpRight is .......
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+UpRight provides an infrastructure and library for building high-availability systems. To use UpRight, the application must implement a set of interface functions specified by the UpRight library. After that, the application is automatically replicated on different machines to tolerate crashes and Byzantine faults.
