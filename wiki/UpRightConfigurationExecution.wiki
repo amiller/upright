@@ -36,4 +36,4 @@ SECRET = -3EA5ADF63362AB2CA44261DCC1C74ABA4AF0C32C39BCB09D5B7FCC006AE7CD12A5B9AC
 The private key file must have the correct name. For example, the file for execution node 0 is EXEC0.privk.properties.
 
 =Generate Configuration Files=
-The configuration files seem to be complex? Don't be afraid. We have provided a tool to generate all these files. All you have to do is to decide how many crashes you want to tolerate and which machines you want to use:
+The configuration files seem to be complex? Don't be afraid. We have provided a tool to generate all these files. All you have to do is to decide how many crashes you want to tolerate and which machines you want to use. The tool will generate all the keys, ports and private key files for you.
