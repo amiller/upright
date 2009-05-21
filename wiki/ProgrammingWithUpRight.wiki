@@ -2,7 +2,10 @@
 
 To use UpRight, the application must implement a set of interface functions. This page gives a brief view of the interface functions. For details, please see the JavaDoc. And here is an example application of how to implement these interfaces.
 
-= Server Interface =
-  The application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface
+= Application Server =
+UpRight requires two instances of application servers: one for executing requests and writing request to log files and the other for merging the logs into a big snapshot file. Correspondingly, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface.
 
-  * MainAppCPInterface.execAsync: execute a request
+  * MainAppCPInterface.execAsync: execute a request. After finished, the application should call CPAppInterface.execDone to send the result back.
+  * MainAppCPInterface.flushAndStartNewLog: flush the current log file and start a new one. Call CPAppInterface.flushDone to give the log file to UpRight and this log file should never be modified, renamed or deleted in the future.
+  * MainAppCPInterface.consumeLog: read the log and replay the requests in the log. Call CPAppInterface.consumeLogDone when finished.
+  * MainAppCPInterface.loadSnapshot: load the snapshot file. Call CPAppInterface.loadSnapshotDone when finished.
