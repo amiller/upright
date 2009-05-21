@@ -7,7 +7,7 @@ First, you need to decide how many and what kinds of faults the system need to t
 The following is a very simple example of configuration file. It contains one ordered node (l=c=1), two execution nodes (l=0 c=1) and one client.
 
 {{{
-rderCrashFailures = 0
+orderCrashFailures = 0
 orderLiarFailures = 0
 execCrashFailures = 1
 execLiarFailures = 0
