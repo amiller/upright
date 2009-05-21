@@ -4,6 +4,12 @@ This example provides a remote hashtable, in which the client can set or get a k
 
 =Application Client=
 {{{
+package Applications.hashtable;
+
+import Applications.hashtable.HTRequest.ht_req_type;
+import BFT.clientShim.ClientShimBaseNode;
+import BFT.network.TCPNetwork;
+
 public class HTClient{
         ClientShimBaseNode clientShim;
         public HTClient(String membership, int id){
