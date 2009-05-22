@@ -6,6 +6,8 @@ To use UpRight, the application must implement a set of interface functions. Thi
 
 Figure here.
 
+[http://www.cs.utexas.edu/~yangwang/UpRightModel.jpg]
+
 = Application Server =
 UpRight requires two instances of application servers: the main instance for executing requests and writing request to log files and the backup instance for merging the logs into a big snapshot file. Correspondingly, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface. All the interface functions are asynchronous, so the application server should call the callback functions after finishing the execution.
 
