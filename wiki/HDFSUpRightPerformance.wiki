@@ -1,0 +1,3 @@
+#summary The performance of HDFS-UpRight
+
+Figure here.
