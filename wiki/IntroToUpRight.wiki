@@ -4,6 +4,6 @@
 
 UpRight is an infrastructure and library for building high-availability distributed systems. It can provide the distributed system with Byzantine Fault Tolerance, strong consistency, linearizability and acceptable performance. All the programmers need to do is to implement a set of interface functions to define the functionality of a single server. UpRight will handle all the other difficult issues, like consistency, fault recovery, state transfer, authentication, etc.
 
-The architecture of UpRight is shown in the following figure.
+The architecture of UpRight is shown in the following figure. The application client sends its requests through the client glue and shim and these requests are ordered by the UpRight Core (Order and RQ nodes). The Execution nodes (application servers) handle these requests in order and send replies back to the clients. All nodes except clients are replicated for fault tolerance and a BFT protocol is used by the UpRight Core, so that even if a given number of nodes are down, faulty or even malicious, the whole system can still work correctly.
 
 [http://www.cs.utexas.edu/~yangwang/architecture.jpg]
