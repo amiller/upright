@@ -1,0 +1,10 @@
+#summary How to config and run HDFS-UpRight
+
+= Configuration =
+
+Both UpRight and HDFS need to be configured properly. See [UpRightConfigurationExecution UpRight Configuration] and [http://hadoop.apache.org/core/docs/current/cluster_setup.html#Configuration Hadoop Configuration] for details.
+
+
+= Run =
+
+Type ....... to start HDFS-UpRight. Type ...... to stop HDFS-UpRight. The script already includes the start/stop of UpRight nodes. (Or not include?)
