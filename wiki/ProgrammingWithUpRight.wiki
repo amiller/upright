@@ -4,14 +4,16 @@ UpRight provides libraries for both application clients and servers. By using th
 
 = Model =
 
-Figure here.
+The UpRight library sit between the application client and server. It takes care of all the network communication, so the application does not need to touch socket.
+On the client side, the application just needs to pass the request to the UpRight client library and then wait for the reply.
+On the server side, things are a bit more complicated. UpRight requires two instances of application servers: the main instance for executing requests and writing request to log files and the backup instance for merging all the previous logs into a big snapshot file. Correspondingly, the application must implement two sets of interface functions for these two instances. The following parts give a brief view of the interface functions. For details, please see the JavaDoc. And here is an [UpRightExample example] application of how to implement these interfaces.
+
 
 [http://www.cs.utexas.edu/~yangwang/UpRightModel.jpg]
 
-To use UpRight, the application needs to implement a set of interface functions. This page gives a brief view of the interface functions. For details, please see the JavaDoc. And here is an [UpRightExample example] application of how to implement these interfaces.
-
+To use UpRight, the application needs to implement a set of interface functions. 
 = Application Server =
-UpRight requires two instances of application servers: the main instance for executing requests and writing request to log files and the backup instance for merging the logs into a big snapshot file. Correspondingly, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface. All the interface functions are asynchronous, so the application server should call the callback functions after finishing the execution.
+The application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface. All the interface functions are asynchronous, so the application server should call the callback functions after finishing the execution.
 
   * MainAppCPInterface.execAsync: execute a request. After finished, the application should call CPAppInterface.execDone to send the result back.
   * MainAppCPInterface.flushAndStartNewLog: flush the current log file and start a new one. Call CPAppInterface.flushDone to give the log file to UpRight and this log file should never be modified, renamed or deleted in the future.
