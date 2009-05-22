@@ -5,3 +5,5 @@
 UpRight provides an infrastructure and library for building high-availability systems. To use UpRight, the application must implement a set of interface functions specified by the UpRight library. After that, the application is automatically replicated on different machines to tolerate crashes and Byzantine faults.
 
 The architecture of UpRight is shown in ... (Figure here)
+
+[http://www.cs.utexas.edu/~yangwang/architecture.jpg]
