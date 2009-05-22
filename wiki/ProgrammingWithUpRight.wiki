@@ -1,6 +1,6 @@
 #summary Writing programs with UpRight
 
-To use UpRight, the application must implement a set of interface functions. This page gives a brief view of the interface functions. For details, please see the JavaDoc. And here is an [UpRightExample example] application of how to implement these interfaces.
+UpRight provides libraries for both application clients and servers. By using these libraries, the application is automatically incorporated into the UpRight infrastructure. The programmer just needs to provide the functions of a single server application, and then the server is automatically replicated by UpRight. Furthermore, UpRight takes care of all the consistency and failure recovery issues. To use UpRight, the application needs to implement a set of interface functions. This page gives a brief view of the interface functions. For details, please see the JavaDoc. And here is an [UpRightExample example] application of how to implement these interfaces.
 
 = Model =
 
