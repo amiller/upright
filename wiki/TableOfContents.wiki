@@ -1,4 +1,3 @@
-  * [Welcome ↑ Home]
   * [Articles UpRight]
     * [IntroToUpRight Introduction]
     * [ProgrammingWithUpRight Write a distributed program with UpRight]
