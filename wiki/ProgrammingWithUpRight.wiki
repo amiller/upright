@@ -1,12 +1,12 @@
 #summary Writing programs with UpRight
 
-UpRight provides libraries for both application clients and servers. By using these libraries, the application is automatically incorporated into the UpRight infrastructure. The programmer just needs to provide the functions of a single server application, and then the server is automatically replicated by UpRight. Furthermore, UpRight takes care of all the consistency and failure recovery issues. 
+UpRight provides libraries for both application clients and servers. By using these libraries, the application is automatically incorporated into the UpRight infrastructure. The programmer just needs to provide the functions of a single server application, and then the server is automatically replicated by UpRight.
 
 = Model =
 
-The UpRight library sit between the application client and server. It takes care of all the network communication, so the application does not need to touch socket.
+The UpRight library sits between the application client and server. It takes care of all the network communication, so the application does not need to touch socket.
 
-On the client side, the application just needs to pass the request to the UpRight client library and then wait for the reply.
+On the client side, the application just needs to pass the request to the UpRight client library and then handles the reply.
 
 On the server side, things are a bit more complicated. UpRight requires two instances of application servers: the main instance for executing requests and writing request to log files and the backup instance for merging all the previous logs into a big snapshot file. Correspondingly, the application must implement two sets of interface functions for these two instances. The following parts give a brief view of the interface functions. For details, please see the JavaDoc. And here is an [UpRightExample example] application of how to implement these interfaces.
 
