@@ -1,9 +1,0 @@
-  * [Articles UpRight]
-    * [IntroToUpRight Introduction]
-    * [ProgrammingWithUpRight Write a distributed program with UpRight]
-    * [UpRightExample Example]
-    * [UpRightConfigurationExecution Configuration and Execution]
-  * [Articles HDFS-UpRight]
-    * [HDFSUpRightGettingStarted   Getting Started]
-    * [HDFSUpRightPerformance Performance]
-    * Demo
