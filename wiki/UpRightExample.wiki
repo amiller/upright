@@ -3,6 +3,7 @@
 This example provides a remote hashtable, in which the client can set or get a key-value pair on the server.
 
 =Define request and reply formats=
+First, the programmer must define the request and reply between client and server. UpRight library considers all requests and replies as byte arrays, so these user defined requests must be convertible to byte arrays.
 {{{
 package Applications.hashtable;
 
@@ -135,6 +136,7 @@ public class HTReply {
 }
 }}}
 =Application Client=
+The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
 {{{
 package Applications.hashtable;
 
@@ -171,6 +173,8 @@ public class HTClient{
 }}}
 
 =Application Server=
+The application server must implement the two sets of interfaces. In this example, the consumeLog and loadSnapshot functions in two interfaces are the same, so this application server just needs to implement five functions: execAysnc, flushAndStartNewLog, consumeLog, sync and loadSnapshot. And the main function shows how connect the server with the UpRight server library.
+ 
 {{{
 package Applications.hashtable;
 
