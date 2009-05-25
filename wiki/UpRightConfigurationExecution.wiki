@@ -1,6 +1,6 @@
 #summary How to config and run UpRight
 
-First, you need to decide how many and what kinds of faults the system need to tolerate. Let l be the total number of Byzantine faults and c be the total number of faults (including Byzantine faults), then the whole system requires 2l+c+1 ordered nodes and l+c+1 execution nodes.
+First, users need to decide how many and what kinds of faults the system need to tolerate. Let l be the total number of Byzantine faults and c be the total number of faults (including Byzantine faults), then the whole system requires 2l+c+1 ordered nodes and l+c+1 execution nodes.
 
 = Configuration =
 
