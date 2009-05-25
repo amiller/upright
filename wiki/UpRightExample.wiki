@@ -3,7 +3,7 @@
 This example provides a remote hashtable, in which the client can set or get a key-value pair on the server.
 
 =Define request and reply formats=
-First, the programmer must define the request and reply between client and server. UpRight library considers all requests and replies as byte arrays, so these user defined requests must be convertible to byte arrays.
+First, the programmer must define the request and reply between client and server. UpRight library considers all requests and replies as byte arrays, so these user defined requests and replies must be convertible to byte arrays.
 {{{
 package Applications.hashtable;
 
