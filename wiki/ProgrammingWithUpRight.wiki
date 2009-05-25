@@ -21,7 +21,7 @@ The application server needs to implement two sets of interfaces: the MainAppCPI
   * MainAppCPInterface.consumeLog: read the log and replay the requests in the log. Call CPAppInterface.consumeLogDone when finished.
   * MainAppCPInterface.loadSnapshot: load the snapshot file. Call CPAppInterface.loadSnapshotDone when finished.
 
-  * BackupAppCPInterface.consumeLog: read the log and replay the requests in the log. The implementation should be similar to MainAppCPInterface.consumeLog, but remember this is executed in the backup instance. Also call CPAppInterface.consumeLogDone when finished.
+  * BackupAppCPInterface.consumeLog: read the log and replay the requests in the log. The implementation should be similar to MainAppCPInterface.consumeLog, but this is executed in the backup instance. Also call CPAppInterface.consumeLogDone when finished.
   * BackupAppCPInterface.sync: write all the application states into a snapshot file. Call CPAppInterface.syncDone when finished.
   * BackupAppCPInterface.loadSnapshot: similar to MainAppCPInterface.loadSnapshot.
 
