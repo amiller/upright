@@ -5,12 +5,14 @@ First, users need to decide how many and what kinds of faults the system need to
 The configuration requires one membership file and several key files. The membership file defines the public information of all the nodes, including IP, ports, public keys, etc and this file should be distributed to every node. The key files define the private keys of all the nodes and they should only be distributed to necessary nodes.
 
 This page provides a sample configuration, which contains one ordered node, two execution nodes and one client. The file layout should be:
+{{{
 test.properties
 keys\
   ORDER0.privk.properties
   EXEC0.privk.properties
   EXEC1.privk.properties
   CLIENT0.privk.properties
+}}}
 
 = Membership file =
 
