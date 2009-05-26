@@ -17,7 +17,7 @@ The test.properties is the membership file and all the key files should be in th
 
 = Membership file =
 
-The following is a very simple example of Membership file. It contains one ordered node (l=c=0), two execution nodes (l=0 c=1) and one client.
+The following is a simple example of Membership file. It contains one ordered node (l=c=0), two execution nodes (l=0 c=1) and one client.
 
 {{{
 orderCrashFailures = 0
