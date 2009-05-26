@@ -2,6 +2,16 @@
 
 First, users need to decide how many and what kinds of faults the system need to tolerate. Let l be the total number of Byzantine faults and c be the total number of faults (including Byzantine faults), then the whole system requires 2l+c+1 ordered nodes and l+c+1 execution nodes.
 
+The configuration requires one membership file and several key files. The membership file defines the public information of all the nodes, including IP, ports, public keys, etc and this file should be distributed to every node. The key files define the private keys of all the nodes and they should only be distributed to necessary nodes.
+
+This page provides a sample configuration, which contains one ordered node, two execution nodes and one client. The file layout should be:
+test.properties
+keys\
+  ORDER0.privk.properties
+  EXEC0.privk.properties
+  EXEC1.privk.properties
+  CLIENT0.privk.properties
+
 = Membership file =
 
 The following is a very simple example of Membership file. It contains one ordered node (l=c=0), two execution nodes (l=0 c=1) and one client.
