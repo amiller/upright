@@ -60,6 +60,6 @@ Steps:
 =Run UpRight=
   * To start ordered nodes:
     java -Djava.library.path=. -cp conf:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar BFT.order.OrderBaseNode 0 test.properties <br/>
-    0 is the id of this ordered node. See the membership file to see the id of each node.<br/>
+    0 is the id of this ordered node. See the membership file to see the id of each node.
   * To stop ordered nodes: just kill the java process.
   * To start clients and servers: this depends on the application.
