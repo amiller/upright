@@ -58,4 +58,8 @@ Steps:
   # Run bftConfigGenerator.sh to generate the membership and key files. This script takes 8 arguments: 1 order crash failures; 2 order liar failures; 3 server crash failures; 4 server liar failures; 5 client number; 6 whether use filtered node or not; 7 filter crash failures; 8 filter liar failures. 6-8 are optional. If there are no 6-8, no filter nodes are used. For example, to generate the previous membership and key files, the command should be "bftConfigGenerator 0 0 1 0 1 >test.properties". And private key files are put into keys directory automatically.
 
 =Run UpRight=
-.......
+To start ordered nodes:
+java -Djava.library.path=. -cp conf:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar BFT.order.OrderBaseNode 0 test.properties
+0 is the id of this ordered node. See the membership file to see the id of each node.
+To stop ordered nodes: just kill the java process.
+How to start clients and servers actually depend on the application.
