@@ -63,8 +63,9 @@ Steps:
   # bftConfigGenerator use ports starting from 6000 for ordered nodes, ports starting from 7000 for servers and ports starting from 9000 for clients. If this has conflicts with your other applications, you need to modify bftConfigGenerator manually.
 
 =Run UpRight=
+  * Copy membership file to every machine and copy private key files to each corresponding machine.
   * To start ordered nodes:
     java -Djava.library.path=. -cp conf:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar BFT.order.OrderBaseNode 0 test.properties <br/>
     0 is the id of this ordered node. See the membership file to see the id of each node.
   * To stop ordered nodes: just kill the java process.
-  * To start clients and servers: this depends on the application.
+  * To start/stop clients and servers: this depends on the application.
