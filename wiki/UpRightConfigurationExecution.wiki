@@ -55,7 +55,7 @@ Steps:
   # Create a file called "servers". List all the machines used as servers.
   # Create a file called "clients". List all the machines used as clients.
   # Create a file called "filters". List all the machines used as filtered nodes. Leave it as blank if no filtered nodes are used.
-  # run bftConfigGenerator.sh to generate the membership and key files.
+  # Run bftConfigGenerator.sh to generate the membership and key files. This script takes 8 arguments: 1 order crash failures; 2 order liar failures; 3 server crash failures; 4 server liar failures; 5 client number; 6 whether use filtered node or not; 7 filter crash failures; 8 filter liar failures. 6-8 are optional. If there are no 6-8, no filter nodes are used. For example, to generate the previous membership and key files, the command should be "bftConfigGenerator 0 0 1 0 1 >test.properties". And private key files are put into keys directory automatically.
 
 =Run UpRight=
 .......
