@@ -50,6 +50,12 @@ The private key file must have the correct name. For example, the file for execu
 
 =Generate Configuration Files=
 The configuration files seem to be complex? Don't be afraid. We have provided a tool to generate all these files. All you have to do is to decide how many crashes you want to tolerate and which machines you want to use. The tool will generate all the keys, ports and private key files for you.
+Steps:
+  # Create a file called "orders". List all the machines you want to use as ordered nodes. Each machine should occupy one line.
+  # Create a file called "servers". List all the machines used as servers.
+  # Create a file called "clients". List all the machines used as clients.
+  # Create a file called "filters". List all the machines used as filtered nodes. Leave it as blank if no filtered nodes are used.
+  # run bftConfigGenerator.sh to generate the membership and key files.
 
 =Run UpRight=
 .......
