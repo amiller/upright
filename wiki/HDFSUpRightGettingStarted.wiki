@@ -9,4 +9,4 @@
 
 = Run =
 
-Type ....... to start HDFS-UpRight. Type ...... to stop HDFS-UpRight. The script already includes the start/stop of UpRight nodes. (Or not include?)
+Type ....... to start HDFS-UpRight. Type ...... to stop HDFS-UpRight. The script already includes the start/stop of UpRight core nodes, so you can omit the steps to start UpRight order/filter nodes.
