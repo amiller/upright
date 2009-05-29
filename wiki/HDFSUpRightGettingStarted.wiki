@@ -2,7 +2,9 @@
 
 = Configuration =
 
-Both UpRight and HDFS need to be configured properly. See [UpRightConfigurationExecution UpRight Configuration] and [http://hadoop.apache.org/core/docs/current/cluster_setup.html#Configuration Hadoop Configuration] for details.
+  # UpRight must be configured properly. See [UpRightConfigurationExecution UpRight Configuration]. Notice that only namenode is replicated by UpRight, so namenodes are "UpRight servers" and datanodes are "UpRight clients". Therefore, when configuring UpRight, you should list all datanodes as clients.
+  # HDFS also needs to be configured properly. See [http://hadoop.apache.org/core/docs/current/cluster_setup.html#Configuration Hadoop Configuration].
+  # Incorporate HDFS with UpRight: modify hdfs-site.xml, add ......
 
 
 = Run =
