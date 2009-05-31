@@ -1,4 +1,4 @@
-#summary How to config and run HDFS-UpRight
+#summary How to configure and run HDFS-UpRight
 
 = Configuration =
 
