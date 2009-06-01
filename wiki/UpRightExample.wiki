@@ -173,7 +173,7 @@ public class HTClient{
 }}}
 
 =Application Server=
-The application server must implement the two sets of interfaces. In this example, the consumeLog and loadSnapshot functions in two interfaces are the same, so this application server just needs to implement five functions: execAysnc, flushAndStartNewLog, consumeLog, sync and loadSnapshot. And the main function shows how connect the server with the UpRight server library.
+The application server must implement the two sets of interfaces. In this example, the consumeLog and loadSnapshot functions in two interfaces are the same, so this application server just needs to implement five functions: execAysnc, flushAndStartNewLog, consumeLog, sync and loadSnapshot. And the main function shows how to connect the server with the UpRight server library.
  
 {{{
 package Applications.hashtable;
