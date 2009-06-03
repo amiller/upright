@@ -28,24 +28,9 @@ The architecture is shown in the figure. UpRight works as follows:
   # Periodically, the server library asks the _Backup_ server instance to perform checkpoint. The checkpoint interval is much larger than the log flush interval.
 
 = Creating an UpRight Service =
-To be incorporated into the UpRight system, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface. The first interface defines the functionality of the _Main_ server instance, including request execution, log flushing log replay and recovery. The second interface defines the functionality of the _Backup_ server instance, including log replay, checkpoint and also recovery. Notice both interfaces include functions of log replay and recovery. Actually, it is possible to use the same code for both interfaces.
-The client library provides an interface to send requests. The application client should use this interface instead of sending requests to sockets.
-See details of these interfaces, see here.
-We have provided an example of how to build an UpRight Service. The example is rather simple, but has all the features described above. See here for the example.
+To be incorporated into the UpRight system, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface. The first interface defines the functionality of the _Main_ server instance, including request execution, log flushing log replay and recovery. The second interface defines the functionality of the _Backup_ server instance, including log replay, checkpoint and also recovery. Notice both interfaces include functions of log replay and recovery. Actually, it is possible to use the same code for both interfaces. <br/>
+The client library provides an interface to send requests. The application client should use this interface instead of sending requests to sockets. <br/>
+For details of these interfaces, see interface specification. <br/>
+We have provided an example of how to build an UpRight Service. It is remote hashtable, in which clients can set or get key/value pairs on the server. The example is rather simple, but has all the features described above. See the example here.
 
-  * MainAppCPInterface.execAsync: execute a request. After finished, the application should call CPAppInterface.execDone to send the result back.
-  * MainAppCPInterface.flushAndStartNewLog: flush the current log file and start a new one. Call CPAppInterface.flushDone to give the log file to UpRight and this log file should never be modified, renamed or deleted in the future.
-  * MainAppCPInterface.consumeLog: read the log and replay the requests in the log. Call CPAppInterface.consumeLogDone when finished.
-  * MainAppCPInterface.loadSnapshot: load the snapshot file. Call CPAppInterface.loadSnapshotDone when finished.
-
-  * BackupAppCPInterface.consumeLog: read the log and replay the requests in the log. The implementation should be similar to MainAppCPInterface.consumeLog, but this is executed in the backup instance. Also call CPAppInterface.consumeLogDone when finished.
-  * BackupAppCPInterface.sync: write all the application states into a snapshot file. Call CPAppInterface.syncDone when finished.
-  * BackupAppCPInterface.loadSnapshot: similar to MainAppCPInterface.loadSnapshot.
-
-==Notices==
-  * Never modify a log file or a snapshot file after returning it to UpRight.
-  * The application must provide determined log and snapshot files. This means that after executing the same sequence of requests, the server should give the same log and snapshot file. There should be no randomness in these files. In reality, time, multi thread, etc, can cause non-determinisms and they should be carefully avoided.
-
-=Application Client=
-UpRight takes care of the network communication, so the client should not touch any socket code any more. Instead, UpRight provides a function for clients to send requests:
-  * ClientShimInterface.execute: the request will be passed to the application server through the execAsync interface. Currently, execute is a blocking call and it will wait for the reply from the server.
+ 
