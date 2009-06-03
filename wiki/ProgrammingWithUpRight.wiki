@@ -3,10 +3,13 @@
 UpRight provides libraries for both application clients and servers. By connecting to these libraries, the application is incorporated into the UpRight infrastructure. The programmer just needs to provide the functions of a single server application, and then the server is automatically replicated by UpRight.
 
 = Model =
+
 == State machine replication ==
 UpRight replicates the application servers for fault tolerance. It requires c+b+1 replicas to tolerate up to c faults of which b may be Byzantine. E.g., 2 servers (c=1, b=0) can keep working even if one crashes (but have trouble if either is incorrect); E.g., 3 servers (c=1, b=1) can keep working even if 1 replica crashes or starts giving the wrong responses.
-== Requirements for state machine replication==
 
+== Requirements for state machine replication==
+  * Ordered requests: requests from all clients must be executed and responded in the same order on all server replicas. UpRight compares the responses from different replicas. If one response is different from the others, it is considered to be incorrect. To be accurate, UpRight requires at least b+1 same responses for one request. Ordered requests also provides strong consistency and linearizability for the system. The ordered nodes (2b+c+1 nodes) in UpRight Core put requests from all clients in the same order and give them to the server replicas. The server replicas must execute these requests and send responses in exactly the same order.
+  * Deterministic execution and checkpoints: all replicas must give the same response for one request. This means that servers must execute the request in a deterministic way. There should be no randomness in the execution. UpRight also requires all replicas to provide the same checkpoints at the same time. Therefore, checkpoints should also be deterministic. Furthermore, if a replica crashes and recovers, it should still be able to provide the same responses and checkpoints as the other replicas. Deterministic execution and checkpoints is the most challenging requirement for the UpRight. Here is some common sources of nondeterminism and tips about how to solve them.
 The UpRight library sits between the application client and server. It takes care of all the network communication, so the application does not need to touch socket.
 
 On the client side, the application just needs to pass the request to the UpRight client library and then handles the reply.
