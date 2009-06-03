@@ -2,7 +2,7 @@
 
 The source code of this example can be found in Applications/hashtable. This example application provides the functions of a remote hashtable, in which the client can read or write a key-value pair on the server. To illustrate how to handle nondeterminism in server replicas, we extended the functions of the hashtable a bit: when the server receives a write request, it also records the modification time in the hashtable. Furthermore, it also generates a random number for this key/value pair. The client can read the random number and timestamp through the read request.
 
-=Define request and reply formats=
+=Define Requests and Replies=
 First, the programmer must define the request and reply between client and server. In this example, they are defined in HTRequest.java and HTReply.java. These two files are simple and this step is of no difference to other distributed systems, so we do not describe it in detail. UpRight library considers all requests and replies as byte arrays, so we also provided Convert.java to convert objects to and from byte arrays.
 
 =Implement the Server=
