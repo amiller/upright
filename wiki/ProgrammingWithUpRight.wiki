@@ -28,8 +28,8 @@ The architecture is shown in the figure. UpRight works as follows:
   # Periodically, the server library asks the _Backup_ server instance to perform checkpoint. The checkpoint interval is much larger than the log flush interval.
 
 = Creating an UpRight Service =
-To be incorporated into the UpRight system, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface. The first interface defines the functionality of the _Main_ server instance, including request execution, log flushing, log replay and recovery. The second interface defines the functionality of the _Backup_ server instance, including log replay, checkpoint and recovery. Notice both interfaces include functions of log replay and recovery. Actually, it is possible to use the same code for both interfaces. <br/>
-The client library provides an interface to send requests. The application client should use this interface instead of sending requests to sockets. <br/>
+  # Server: to be incorporated into the UpRight system, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface. The first interface defines the functionality of the _Main_ server instance, including request execution, log flushing, log replay and recovery. The second interface defines the functionality of the _Backup_ server instance, including log replay, checkpoint and recovery. Notice both interfaces include functions of log replay and recovery. Actually, it is possible to use the same code for both interfaces.
+  # Client: the client library provides an interface to send requests. The application client should use this interface instead of sending requests to sockets.
 For details of these interfaces, see [InterfaceSpecification interface specification]. <br/>
 We have provided an example of how to build an UpRight Service. It is remote hashtable, in which clients can set or get key/value pairs on the server. The example is rather simple, but has all the features described above. [UpRightExample Go to the example].
 
