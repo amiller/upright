@@ -5,6 +5,14 @@ The source code of this example can be found in Applications/hashtable. This exa
 =Define request and reply formats=
 First, the programmer must define the request and reply between client and server. In this example, they are defined in HTRequest.java and HTReply.java. These two files are simple and this step is of no difference to other distributed systems, so we do not describe it in detail. UpRight library considers all requests and replies as byte arrays, so we also provided Convert.java to convert objects to and from byte arrays.
 
+=Implement the Server=
+The server implementation is mainly in HTServer.java.
+==Data Structures==
+The key data structure is a hashtable: (DataUnit is a triple of value, random number and timestamp):
+{{{
+LinkedHashMap<String, DataUnit> ht;
+}}}
+
 =Application Client=
 The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
 {{{
