@@ -12,7 +12,18 @@ The key data structure is a hashtable: (DataUnit is a triple of value, random nu
 {{{
 LinkedHashMap<String, DataUnit> ht;
 }}}
-
+To demonstrate how to keep states, we also add an extra variable
+{{{
+int writeCount=0;
+}}}
+The CPAppInterface provides the callback for each function. We will show how to instantiate it later.
+{{{
+CPAppInterface generalCP=null;
+}}}
+We use an ArrayList to cache requests. This ArrayList serves as an in memory log and when the server library asks to write log to disk, we write this whole ArrayList to a file and then clear the ArrayList.
+{{{
+ArrayList<LogEntry> logs=new ArrayList<LogEntry>();
+}}}
 =Application Client=
 The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
 {{{
