@@ -3,6 +3,9 @@
 UpRight provides libraries for both application clients and servers. By connecting to these libraries, the application is incorporated into the UpRight infrastructure. The programmer just needs to provide the functions of a single server application, and then the server is automatically replicated by UpRight.
 
 = Model =
+== State machine replication ==
+UpRight replicates the application servers for fault tolerance. It requires c+b+1 replicas to tolerate up to c faults of which b may be Byzantine. E.g., 2 servers (c=1, b=0) can keep working even if one crashes (but have trouble if either is incorrect); E.g., 3 servers (c=1, b=1) can keep working even if 1 replica crashes or starts giving the wrong responses.
+== Requirements for state machine replication==
 
 The UpRight library sits between the application client and server. It takes care of all the network communication, so the application does not need to touch socket.
 
