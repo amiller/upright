@@ -7,7 +7,7 @@ First, the programmer must define the request and reply between client and serve
 
 =Implement the Server=
 The server implementation is mainly in HTServer.java.
-==Data Structures==
+===Data Structures===
 The key data structure is a hashtable: (DataUnit is a triple of value, random number and timestamp):
 {{{
 LinkedHashMap<String, DataUnit> ht;
@@ -24,6 +24,27 @@ We use an ArrayList to cache requests. This ArrayList serves as an in memory log
 {{{
 ArrayList<LogEntry> logs=new ArrayList<LogEntry>();
 }}}
+And two strings are used store the directory to write log and checkpoint file. We can see later these two are used when instantiating the CPAppInterface object.
+{{{
+private String logDir=null;
+private String syncDir=null;
+}}}
+===Constructor===
+Initialize everything:
+{{{
+        public HTServer(String logDir, String syncDir) throws IOException {
+                this.logDir=logDir+File.separator;
+                this.syncDir=syncDir+File.separator;
+                ht = new LinkedHashMap<String, DataUnit>();
+                File logDir2 = new File(this.logDir);
+                logDir2.mkdirs();
+                File syncDir2 = new File(this.syncDir);
+                syncDir2.mkdirs();
+        }
+}}}
+
+
+
 =Application Client=
 The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
 {{{
