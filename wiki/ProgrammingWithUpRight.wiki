@@ -29,6 +29,9 @@ The architecture is shown in the figure. UpRight works as follows:
 
 = Creating an UpRight Service =
 To be incorporated into the UpRight system, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface. The first interface defines the functionality of the _Main_ server instance, including request execution, log flushing log replay and recovery. The second interface defines the functionality of the _Backup_ server instance, including log replay, checkpoint and also recovery. Notice both interfaces include functions of log replay and recovery. Actually, it is possible to use the same code for both interfaces.
+The client library provides an interface to send requests. The application client should use this interface instead of sending requests to sockets.
+See details of these interfaces, see here.
+We have provided an example of how to build an UpRight Service. The example is rather simple, but has all the features described above. See here for the example.
 
   * MainAppCPInterface.execAsync: execute a request. After finished, the application should call CPAppInterface.execDone to send the result back.
   * MainAppCPInterface.flushAndStartNewLog: flush the current log file and start a new one. Call CPAppInterface.flushDone to give the log file to UpRight and this log file should never be modified, renamed or deleted in the future.
