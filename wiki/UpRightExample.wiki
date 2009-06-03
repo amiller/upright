@@ -6,13 +6,17 @@ The source code of this example can be found in Applications/hashtable. This exa
 First, the programmer must define the request and reply between client and server. In this example, they are defined in HTRequest.java and HTReply.java. These two files are simple and this step is of no difference to other distributed systems, so we do not describe it in detail. UpRight library considers all requests and replies as byte arrays, so we also provided Convert.java to convert objects to and from byte arrays.
 
 =Implement the Server=
-The server implementation is mainly in HTServer.java.
+The server implementation is mainly in HTServer.java. The server class must implement the two server interfaces:
+{{{
+public class HTServer implements MainAppCPInterface, BackupAppCPInterface
+}}}
+
 ===Data Structures===
 The key data structure is a hashtable: (DataUnit is a triple of value, random number and timestamp):
 {{{
 LinkedHashMap<String, DataUnit> ht;
 }}}
-To demonstrate how to keep states, we also add an extra variable
+To demonstrate how to keep states, we also add an extra variable, which is added by one for each write operation.
 {{{
 int writeCount=0;
 }}}
@@ -43,7 +47,34 @@ Initialize everything:
         }
 }}}
 
+===Execute a request===
+If it is read request, then get the data from the hashtable. If it is a write request, then write to hashtable and increase writeCount. Several notices here:
+  # This function shows how to use random number and time deterministically: use RequestInfo.getRandom() and RequestInfo.getTime() instead of using java library functions.
+  # Write request is logged in this function. Most storage system requires logs to be written to disk before replying to the client. However, UpRight does not have this restriction. We can see here the server just logs the request in memory and then replies. The reason is that UpRight Core writes each request to disk and if the server crashes, the UpRight Core resends these requests to the server, so there will be no data lost.
+{{{
+        @Override
+        public synchronized void execAsync(byte[] request, RequestInfo info) {
+                HTRequest req = (HTRequest)(Convert.bytesToObject(request));
+                HTReply rep = null;
+                String key = req.getKey();
+                if(req.getType() == HTRequest.READ){
+                        if(ht.containsKey(key)){
+                                rep = new HTReply(false, ht.get(key));
+                        }else{
+                                rep = new HTReply(true, null);
+                        }
+                } else {        // WRITE operation
+                        //Write requests must be logged. 
+                        DataUnit data=new DataUnit(req.getValue(), info.getRandom(), info.getTime());
+                        logs.add(new LogEntry(key,data));
+                        ht.put(key, data);
+                        writeCount++;
+                        rep = new HTReply(false, null);
+                }
+                generalCP.execDone(Convert.objectToBytes(rep), info);
 
+        }
+}}}
 
 =Application Client=
 The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
