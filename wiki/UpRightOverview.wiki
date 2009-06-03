@@ -1,6 +1,5 @@
-<table align="center"><tr><td>
-=Welcome to UpRight=
-</td></tr></table> 
+
+=Overview of UpRight=
 
 UpRight is an infrastructure and library for building high-availability distributed systems. It can automatically replicate the application server for fault tolerance. It provides the following features:
   * *High Availability*: the system can tolerate both Byzantine Faults and Crash Faults.
