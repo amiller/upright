@@ -14,15 +14,3 @@ UpRight is an infrastructure and library for building high-availability distribu
 <br/>
 
 The architecture of UpRight? is shown in the figure. The application client sends its requests through the client library and these requests are ordered by the UpRight? Core (Order and RQ nodes). The application servers handle these ordered requests and send replies back to the clients. All nodes except clients are replicated for fault tolerance and a BFT protocol is used by the UpRight Core, so that even if a given number of nodes are down, faulty or even malicious, the whole system can still work correctly. 
-
-We have provided an UpRight version of [http://hadoop.apache.org/core/docs/current/hdfs_design.html HDFS]. In HDFS-UpRight, the namenode is replicated so that there is no single failure point in the whole system.
-
-=UpRight=
-  * [ProgrammingWithUpRight Write a distributed program with UpRight]
-  * [UpRightExample Example]
-  * [UpRightConfigurationExecution Configuration and Execution]
-
-=HDFS-UpRight=
-  * [HDFSUpRightGettingStarted   Getting Started]
-  * [HDFSUpRightPerformance Performance]
-  * [http://pc17.cias.utexas.edu Demo]
