@@ -1,7 +1,7 @@
 #summary The interface specification.
 
 =Server Interface=
- * MainAppCPInterface.execAsync: execute a request. After finished, the application should call CPAppInterface.execDone to send the result back.
+  * MainAppCPInterface.execAsync: execute a request. After finished, the application should call CPAppInterface.execDone to send the result back.
   * MainAppCPInterface.flushAndStartNewLog: flush the current log file and start a new one. Call CPAppInterface.flushDone to give the log file to UpRight and this log file should never be modified, renamed or deleted in the future.
   * MainAppCPInterface.consumeLog: read the log and replay the requests in the log. Call CPAppInterface.consumeLogDone when finished.
   * MainAppCPInterface.loadSnapshot: load the snapshot file. Call CPAppInterface.loadSnapshotDone when finished.
