@@ -230,7 +230,7 @@ public class HTClient{
 
 =Compile and Run the example=
   * [UpRightInstall Compile your code with UpRight].
-  * [UpRightConfigurationExecution Generate your configuration]. In the following steps, we assume you use the (1 order, 3 server, 1 client) configuration.
+  * [UpRightConfigurationExecution Generate your configuration]. In the following steps, we assume you use the (1 order, 1 server, 1 client) configuration on localhost.
   * Start the UpRight Core: 
     {{{
     java -cp conf:upright.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar BFT.order.OrderBaseNode 0 test.properties
@@ -238,8 +238,6 @@ public class HTClient{
   * Start the 3 servers:
     {{{
     java -cp conf:upright.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  Applications.hashtable.HTServer 0 test.properties /tmp/httest/0/log /tmp/httest/0/ss
-    java -cp conf:upright.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  Applications.hashtable.HTServer 1 test.properties /tmp/httest/1/log /tmp/httest/1/ss 
-    java -cp conf:upright.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  Applications.hashtable.HTServer 2 test.properties /tmp/httest/2/log /tmp/httest/2/ss 
     }}}
 
   * Start the client:
