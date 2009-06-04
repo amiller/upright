@@ -233,11 +233,17 @@ public class HTClient{
   * [UpRightConfigurationExecution Generate your configuration]. In the following steps, we assume you use the (1 order, 3 server, 1 client) configuration.
   * Start the UpRight Core: 
     {{{
-    java -cp conf:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar BFT.order.OrderBaseNode 0 test.properties
+    java -cp conf:upright.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar BFT.order.OrderBaseNode 0 test.properties
     }}}
-  * Start the 3 Servers:
+  * Start the 3 servers:
     {{{
-    java -cp conf:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  Applications.hashtable.HTServer 0 test.properties /tmp/httest/0/log /tmp/httest/0/ss
-    java -cp conf:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  Applications.hashtable.HTServer 1 test.properties /tmp/httest/1/log /tmp/httest/1/ss 
-    java -cp conf:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  Applications.hashtable.HTServer 2 test.properties /tmp/httest/2/log /tmp/httest/2/ss 
+    java -cp conf:upright.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  Applications.hashtable.HTServer 0 test.properties /tmp/httest/0/log /tmp/httest/0/ss
+    java -cp conf:upright.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  Applications.hashtable.HTServer 1 test.properties /tmp/httest/1/log /tmp/httest/1/ss 
+    java -cp conf:upright.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  Applications.hashtable.HTServer 2 test.properties /tmp/httest/2/log /tmp/httest/2/ss 
     }}}
+
+  * Start the client:
+    {{{
+    java -cp conf:upright.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar Applications.hashtable.HTClient test.properties 0
+    }}}
+    You should be able to see it outputs a value 1, a random number and a timestamp.
