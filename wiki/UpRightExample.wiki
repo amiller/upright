@@ -119,7 +119,7 @@ Replay log is performed when 1) the _Main_ server instance passes the informatio
 }}}
 
 === Write Checkpoint to Disk ===
-This function writes the whole application states to the disk. The application should be able to fully recover from this checkpoint without previous logs. Previous log will be discarded to save disk space. However, do not delete log files in your application. The UpRight server library will perform this task. In this example, both the hashtable and the writeCount are written to disk. It calls syncDone finally.
+This function writes the whole application states to the disk. The application should be able to fully recover from this checkpoint without previous logs. Previous log will be discarded to save disk space. However, do not delete log files in your application. The UpRight server library will perform this task. In this example, both the hashtable and the writeCount are written to disk. It calls syncDone finally. Similarly, the name of the checkpoint file should be deterministic.
 {{{
         @Override
         public void sync() {
