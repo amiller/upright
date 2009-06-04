@@ -33,8 +33,8 @@ Steps:
 
 ===Notices===
   # The number of nodes in the orders/servers/clients/filters/ files should match with the argument of bftConfigGenerator command. For example, bftConfigGenerator 0 0 1 0 1 requires two server nodes. Then there should be two lines in the servers file. Otherwise, bftConfigGenerator will report an error.
-  # bftConfigGenerator does not support multiple same types of nodes on the same machine. For example, if you want to put two clients on the same machine, there will be conflicts in ports. If you really want to do so, you need to modify the membership file manually. bftConfigGenerator DOES support different types of nodes on the same machine, e.g, one ordered node and one server on the same machine. However, this will reduce the availability of the system.
-  # bftConfigGenerator use ports starting from 6000 for ordered nodes, ports starting from 7000 for servers and ports starting from 9000 for clients. If this has conflicts with your other applications, you need to modify bftConfigGenerator manually.
+  # bftConfigGenerator does not support multiple same types of nodes on the same machine, except clients. For example, if you want to put two ordered nodes on the same machine, there will be conflicts in ports. If you really want to do so, you need to modify the membership file manually. bftConfigGenerator DOES support different types of nodes on the same machine, e.g, one ordered node and one server on the same machine. However, this will reduce the availability of the system. Putting multiple clients on a machine is OK.
+  # bftConfigGenerator use ports starting from 6000 for ordered nodes, ports starting from 7000 for servers, ports starting from 8000 for filtered nodes and ports starting from 9000 for clients. If this has conflicts with your other applications, you need to modify bftConfigGenerator manually.
 
 =Run UpRight=
   * Copy membership file to every machine and copy private key files to each corresponding machine.
