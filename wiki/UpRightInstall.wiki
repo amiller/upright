@@ -15,4 +15,4 @@ The current version of UpRight is fully implemented by Java, so it should be abl
 There are no specific steps required to install UpRight. You just need to put the upright.jar and all the dependencies in the same directory and that is all.
 
 ==Compile your own program==
-First, see [UpRightProgramming how to write a program with UpRight] and [UpRightExample a simple example].
+First, see  [ProgrammingWithUpRight how to write a program with UpRight] and [UpRightExample a simple example].
