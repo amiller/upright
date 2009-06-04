@@ -37,7 +37,7 @@ private String syncDir=null;
 Initialize everything:
 {{{
         public HTServer(String logDir, String syncDir) throws IOException {
-                this.logDir=logDir+File.separator;
+               this.logDir=logDir+File.separator;
                 this.syncDir=syncDir+File.separator;
                 ht = new LinkedHashMap<String, DataUnit>();
                 File logDir2 = new File(this.logDir);
@@ -51,6 +51,8 @@ Initialize everything:
 If it is read request, then get the data from the hashtable. If it is a write request, then write to hashtable and increase writeCount. Several notices here:
   # This function shows how to use random number and time deterministically: use RequestInfo.getRandom() and RequestInfo.getTime() instead of using java library functions.
   # Write request is logged in this function. Most storage system requires logs to be written to disk before replying to the client. However, UpRight does not have this restriction. We can see here the server just logs the request in memory and then replies. The reason is that UpRight Core writes each request to disk and if the server crashes, the UpRight Core resends these requests to the server, so there will be no data lost.
+
+
 {{{
         @Override
         public synchronized void execAsync(byte[] request, RequestInfo info) {
