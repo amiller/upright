@@ -23,13 +23,13 @@ All these files can be find in the sample_config directory.
   * [SampleConfig4 4 Orders 4 Filters 3 Servers 4 Clients on different machines]
 
 =Generate Configuration Files=
-The configuration files seem to be complex? Don't be afraid. We have provided a tool to generate all these files. All you have to do is to decide how many crashes you want to tolerate and which machines you want to use. The tool will generate all the keys, ports and private key files for you.
+The configuration files seem to be complex? Don't be afraid. We have provided a tool to generate all these files. All you have to do is to decide how many crashes you want to tolerate and which machines you want to use. The tool will generate all the keys, ports and private key files for you. The tool can be found in sample_config directory.
 Steps:
-  # Create a file called "orders". List all the machines you want to use as ordered nodes. Each machine should occupy one line.
-  # Create a file called "servers". List all the machines used as servers.
-  # Create a file called "clients". List all the machines used as clients.
-  # Create a file called "filters". List all the machines used as filtered nodes. Leave it as blank if no filtered nodes are used.
-  # Run bftConfigGenerator.sh to generate the membership and key files. This script takes 8 arguments: 1 order crash failures; 2 order liar failures; 3 server crash failures; 4 server liar failures; 5 client number; 6 whether use filtered node or not; 7 filter crash failures; 8 filter liar failures. 6-8 are optional. If there are no 6-8, no filter nodes are used. For example, to generate the previous membership and key files, the command should be "bftConfigGenerator 0 0 1 0 1 >test.properties". And private key files are put into keys directory automatically.
+  # Modify the file "orders". List all the machines you want to use as ordered nodes. Each machine should occupy one line.
+  # Modify the file "servers". List all the machines used as servers.
+  # Modify the file "clients". List all the machines used as clients.
+  # Modify the file "filters". List all the machines used as filtered nodes. Leave it as blank if no filtered nodes are used.
+  # Run bftConfigGenerator.sh to generate the membership and key files. This script takes 8 arguments: 1 order crash failures; 2 order liar failures; 3 server crash failures; 4 server liar failures; 5 client number; 6 whether use filtered node or not; 7 filter crash failures; 8 filter liar failures. 6-8 are optional. If there are no 6-8, no filter nodes are used. For example, to generate a (1 order 3 server 1 client) configuration, the command should be "bftConfigGenerator 0 0 1 1 1 >config.properties". And private key files are put into keys directory automatically.
 
 ===Notices===
   # The number of nodes in the orders/servers/clients/filters/ files should match with the argument of bftConfigGenerator command. For example, bftConfigGenerator 0 0 1 0 1 requires two server nodes. Then there should be two lines in the servers file. Otherwise, bftConfigGenerator will report an error.
@@ -39,7 +39,7 @@ Steps:
 =Run UpRight=
   * Copy membership file to every machine and copy private key files to each corresponding machine.
   * To start ordered nodes:
-    java -Djava.library.path=. -cp conf:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar BFT.order.OrderBaseNode 0 test.properties <br/>
-    0 is the id of this ordered node. See the membership file to see the id of each node.
+    java -Djava.library.path=. -cp conf:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar BFT.order.OrderBaseNode 0 config.properties <br/>
+    0 is the id of this ordered node. See the membership file to see the id of each node. config.properties is the membership file.
   * To stop ordered nodes: just kill the java process.
   * To start/stop clients and servers: this depends on the application.
