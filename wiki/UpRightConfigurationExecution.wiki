@@ -1,10 +1,10 @@
 #summary How to config and run UpRight
 
-First, users need to decide how many and what kinds of faults the system need to tolerate. Let l be the total number of Byzantine faults and c be the total number of faults (including Byzantine faults), then the whole system requires 2l+c+1 ordered nodes and l+c+1 execution nodes.
+First, users need to decide how many and what kinds of faults the system need to tolerate. Let b be the total number of Byzantine faults and c be the total number of faults (including Byzantine faults), then the whole system requires 2b+c+1 ordered nodes and b+c+1 execution nodes. If filtered node is used, it also requires 2c+b+1 filtered nodes. Notice that b and c for different nodes can be different. E.g., you can set b of ordered nodes to 1 and set b of servers to 2.
 
-The configuration requires one membership file and several key files. The membership file defines the public information of all the nodes, including IP, ports, public keys, etc and this file should be distributed to every node. The key files define the private keys of all the nodes and they should only be distributed to necessary nodes.
+The configuration requires one membership file and several key files. The membership file defines the public information of all the nodes, including IP, ports, public keys, etc and this file should be distributed to every node. The key files define the private keys of all the nodes and they should only be distributed to the corresponding nodes.
 
-This page provides a sample configuration, which contains one ordered node, two execution nodes and one client. The file layout should be:
+The membership and key files should be in a correct layout. For example, if there are one ordered node, two execution nodes and one client. The file layout should be:
 {{{
 test.properties
 keys\
@@ -15,38 +15,12 @@ keys\
 }}}
 The test.properties is the membership file and all the key files should be in the keys directory.
 
-= Membership file =
+=Sample Configuration Files=
 
-The following is a simple example of Membership file. It contains one ordered node (l=c=0), two execution nodes (l=0 c=1) and one client.
-
-{{{
-orderCrashFailures = 0
-orderLiarFailures = 0
-execCrashFailures = 1
-execLiarFailures = 0
-clientCount = 1
-filtered = false
-filterCrashFailures = 0
-filterLiarFailures = 0
-
-ORDER.0 = localhost:8000 localhost:8001 localhost:8002 localhost:8003 8E0E166E2644B4DE35D97AD82F23D509A709C3BDA53979FB73275AD4F64252334E4586D804B38B94861B5B0D81D1CA01EC3F670D8CD02830EA0AEF7A5B29DB8F28745C1DD0153D093B90CC7ECAB7AB468383C213E3A134CAC2C9400B9BF4BF6014CFF29D34EC707CD25313F15973656CE15FA1B28A33D20F4109A38F8B0A67C5:10001
-
-EXEC.0 = localhost:7000 localhost:7001 localhost:7002 localhost:7003 8E0E166E2644B4DE35D97AD82F23D509A709C3BDA53979FB73275AD4F64252334E4586D804B38B94861B5B0D81D1CA01EC3F670D8CD02830EA0AEF7A5B29DB8F28745C1DD0153D093B90CC7ECAB7AB468383C213E3A134CAC2C9400B9BF4BF6014CFF29D34EC707CD25313F15973656CE15FA1B28A33D20F4109A38F8B0A67C5:10001
-EXEC.1 = localhost:7004 localhost:7005 localhost:7006 localhost:7007 8E0E166E2644B4DE35D97AD82F23D509A709C3BDA53979FB73275AD4F64252334E4586D804B38B94861B5B0D81D1CA01EC3F670D8CD02830EA0AEF7A5B29DB8F28745C1DD0153D093B90CC7ECAB7AB468383C213E3A134CAC2C9400B9BF4BF6014CFF29D34EC707CD25313F15973656CE15FA1B28A33D20F4109A38F8B0A67C5:10001
-
-CLIENT.0 = localhost:9001 localhost:9002 localhost:9003 localhost:9004 8E0E166E2644B4DE35D97AD82F23D509A709C3BDA53979FB73275AD4F64252334E4586D804B38B94861B5B0D81D1CA01EC3F670D8CD02830EA0AEF7A5B29DB8F28745C1DD0153D093B90CC7ECAB7AB468383C213E3A134CAC2C9400B9BF4BF6014CFF29D34EC707CD25313F15973656CE15FA1B28A33D20F4109A38F8B0A67C5:10001
-}}}
-
-
-=Key file=
-This is an example private key file:
-{{{
-PRIV = 8E0E166E2644B4DE35D97AD82F23D509A709C3BDA53979FB73275AD4F64252334E4586D804B38B94861B5B0D81D1CA01EC3F670D8CD02830EA0AEF7A5B29DB8F28745C1DD0153D093B90CC7ECAB7AB468383C213E3A134CAC2C9400B9BF4BF6014CFF29D34EC707CD25313F15973656CE15FA1B28A33D20F4109A38F8B0A67C5:55E2908F2215F22053005CF42D74058E636E54E8E8E71A27FB9434A78307CFF8F2FEB82B0C949CF43C2C77DD6FBAADDE81BE4788FAB4B347F7888B0737ECD3B01056331E11B3C66122A0C0E53A0E38C0823FAE6F5398C04398C1E41F0EE5CB33D91147676DC0F0B2BC93C02CCF767B30240C833A3A4EB73BF72F9930FF7F51D5
-PUB = 8E0E166E2644B4DE35D97AD82F23D509A709C3BDA53979FB73275AD4F64252334E4586D804B38B94861B5B0D81D1CA01EC3F670D8CD02830EA0AEF7A5B29DB8F28745C1DD0153D093B90CC7ECAB7AB468383C213E3A134CAC2C9400B9BF4BF6014C
-FF29D34EC707CD25313F15973656CE15FA1B28A33D20F4109A38F8B0A67C5:10001
-SECRET = -3EA5ADF63362AB2CA44261DCC1C74ABA4AF0C32C39BCB09D5B7FCC006AE7CD12A5B9ACFCB937C9A724649F07755A820DFA4DAB55970533A4644BA38A37B3A9C4
-}}}
-The private key file must have the correct name. For example, the file for execution node 0 is EXEC0.privk.properties.
+  * 1 Order 1 Server 1 Client on localhost
+  * 1 Order 3 Servers 1 Client on different machines
+  * 4 Orders 3 Servers 4 Clients on different machines
+  * 4 Orders 4 Filters 3 Servers 4 Clients on different machines
 
 =Generate Configuration Files=
 The configuration files seem to be complex? Don't be afraid. We have provided a tool to generate all these files. All you have to do is to decide how many crashes you want to tolerate and which machines you want to use. The tool will generate all the keys, ports and private key files for you.
