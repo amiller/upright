@@ -155,14 +155,20 @@ This function is performed during recovery. In this example, the application rea
         }
 }}}
 
-=Application Client=
+= Implement the Client=
 The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
 {{{
 package Applications.hashtable;
 
-import Applications.hashtable.HTRequest.ht_req_type;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
 import BFT.clientShim.ClientShimBaseNode;
 import BFT.network.TCPNetwork;
+
+
 
 public class HTClient{
         ClientShimBaseNode clientShim;
@@ -174,231 +180,34 @@ public class HTClient{
 
         public void write(String key, int value)
         {
-                 HTRequest req = new HTRequest(ht_req_type.WRITE, key, value);
-                 HTReply rep = HTReply.getHTReplyFromBytes(clientShim.execute(req.toBytes()));
-                 if(rep.error){
+                HTRequest req = new HTRequest(HTRequest.WRITE, key, value);
+                byte[] replyBytes = clientShim.execute(Convert.objectToBytes(req));
+                HTReply rep=(HTReply)(Convert.bytesToObject(replyBytes));
+                if(rep.isError()){
                         throw new RuntimeException("Write failed");
-                 }
+                }
         }
 
-        public int read(String key){
-                HTRequest req = new HTRequest(ht_req_type.READ, key, 0);
-                HTReply rep = HTReply.getHTReplyFromBytes(clientShim.execute(req.toBytes()));
-                if(rep.error){
+        public DataUnit read(String key){
+                HTRequest req = new HTRequest(HTRequest.READ, key, 0);
+                byte [] replyBytes = clientShim.execute(Convert.objectToBytes(req));
+                HTReply rep = (HTReply)(Convert.bytesToObject(replyBytes));
+                if(rep.isError()){
                       throw new RuntimeException("Read failed");
                 }
-                return rep.value;
+                return rep.getData();
+        }
+
+        public static void main(String[] args){
+                String membership=args[0];
+                int id=Integer.parseInt(args[1]);
+                HTClient client=new HTClient(membership, id);
+                client.write("1",1);
+                DataUnit data=client.read("1");
+                System.out.println("value="+data.getValue());
+                System.out.println("random="+data.getRandom());
+                System.out.println("timestamp="+data.getTimestamp());
+                System.exit(0);
         }
 }
-}}}
-
-
-=Application Server=
-The application server must implement the two sets of interfaces. In this example, the consumeLog and loadSnapshot functions in two interfaces are the same, so this application server just needs to implement five functions: execAysnc, flushAndStartNewLog, consumeLog, sync and loadSnapshot. And the main function shows how to connect the server with the UpRight server library.
- 
-{{{
-package Applications.hashtable;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-
-import Applications.hashtable.HTRequest.ht_req_type;
-import BFT.generalcp.CPAppInterface;
-import BFT.generalcp.MainAppCPInterface;
-import BFT.generalcp.BackupAppCPInterface;
-import BFT.generalcp.GeneralCP;
-import BFT.generalcp.RequestInfo;
-import BFT.serverShim.ShimBaseNode;
-import java.io.EOFException;
-import java.util.Collection;
-import java.util.Iterator;
-
-public class HTSingleApp implements MainAppCPInterface, BackupAppCPInterface{
-
-        LinkedHashMap<String, Integer> ht;
-        CPAppInterface generalCP;
-
-        DataOutputStream log;
-        String logfile;
-        DataOutputStream sync;
-        String syncfile;
-        int syncCounter;
-
-        private String log_prefix=null;
-        private String sync_prefix=null;
-        static String syncbasename="ht_sync_";
-
-        public HTSingleApp(String log_prefix, String sync_prefix) throws IOException {
-                this.log_prefix=log_prefix+File.separator;
-                this.sync_prefix=sync_prefix+File.separator;
-                ht = new LinkedHashMap<String, Integer>();
-                File logDir = new File(this.log_prefix);
-                logDir.mkdirs();
-                logfile = this.log_prefix+"ht_log_0";
-                log = new DataOutputStream(new FileOutputStream(logfile));
-                syncCounter = 0;
-                syncfile = syncbasename+syncCounter;
-       }
-
-        public void setGenCP(CPAppInterface cp) {
-                generalCP = cp;
-        }
-
-        @Override
-        public synchronized void execAsync(byte[] request, RequestInfo info) {
-
-                HTRequest req = HTRequest.getHTReqeustFromBytes(request);
-                HTReply rep = new HTReply();
-                String key = req.key;
-                if(req.type == ht_req_type.READ){
-
-                        if(ht.containsKey(key)){
-                                rep.error = false;
-                                rep.value = ht.get(key);
-                        }else{
-                                rep.error = true;
-                        }
-                } else {
-                        // WRITE operation
-                        try {
-                                // log this request
-                                log.writeUTF(key);
-                                log.writeInt(req.value);
-                        } catch (IOException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                                System.exit(-1);
-                        }
-                        ht.put(key, req.value);
-                        rep.error = false;
-                }
-
-                generalCP.execDone(rep.toBytes(), info);
-
-        }
-
-        @Override
-        public synchronized void flushAndStartNewLog(long seqNo) {
-                DataOutputStream oldLog = log;
-                //LogInfo info = new LogInfo(oldLog, logfile, seqNo);
-                //logQueue.enqueue(info);
-            try {
-                oldLog.flush();
-                oldLog.close();
-                File logFile = new File(logfile);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.exit(-1);
-            }
-            logfile = log_prefix+"ht_log_" + seqNo;
-            try {
-                    log = new DataOutputStream(new FileOutputStream(logfile));
-            } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                    System.exit(-1);
-            }
-            generalCP.flushDone(seqNo, log_prefix+"log_"+seqNo);
-        }
-
-        @Override
-        public void consumeLog(String fileName) {
-                DataInputStream is = null;
-            try {
-                is = new DataInputStream(new FileInputStream(fileName));
-                while (true) { // exception catches EOF
-                    String key = is.readUTF();
-                    int value = is.readInt();
-
-                    ht.put(key, value);
-                }
-            } catch (EOFException eof) {
-                System.out.println(" >> Normal program termination.");
-            } catch (FileNotFoundException noFile) {
-                System.err.println("File not found! " + noFile);
-            } catch (IOException io) {
-                System.err.println("I/O error occurred: " + io);
-            } catch (Throwable anything) {
-                System.err.println("Abnormal exception caught !: " + anything);
-            } finally {
-                if (is != null) {
-                    try {
-                        is.close();
-                    } catch (IOException ignored) {
-                    }
-                }
-            }
-
-            generalCP.consumeLogDone(fileName);
-
-        }
-
-        @Override
-        public synchronized void loadSnapshot(String fileName) {
-                try {
-                        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
-                        ht = (LinkedHashMap<String, Integer>) ois.readObject();
-                        int index=fileName.indexOf(syncbasename);
-                        syncCounter=Integer.parseInt(fileName.substring(index+syncbasename.length()));
-                        syncCounter++;
-                        syncfile=syncbasename + syncCounter;
-                        generalCP.loadSnapshotDone();
-                } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                        System.exit(-1);
-                } catch (IOException e) {
-                        e.printStackTrace();
-                        System.exit(-1);
-                } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                        System.exit(-1);
-                }
-                generalCP.loadSnapshotDone();
-
-        }
-
-        @Override
-        public void sync() {
-            try {
-                ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(sync_prefix+syncfile));
-                oos.writeObject(ht);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                System.exit(-1);
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.exit(-1);
-            }
-            String writtenSyncFile = syncfile;
-            syncCounter++;
-            syncfile = syncbasename + syncCounter;
-
-            generalCP.syncDone(sync_prefix+writtenSyncFile);
-        }
-
-        public static void main(String args[]) throws Exception{
-
-            if(args.length!=4){
-                System.out.println("Usage: java Applications.hashtable <id> <config_file> <log_path> <snapshot_path>");
-            }
-            GeneralCP generalCP = new GeneralCP(Integer.parseInt(args[0]), args[1], args[2], args[3]);
-            HTSingleApp main = new HTSingleApp(args[2],args[3]);
-            HTSingleApp helper = new HTSingleApp(args[2], args[3]);
-            main.setGenCP(generalCP);
-            helper.setGenCP(generalCP);
-            generalCP.setupApplication(main, helper);
-        }
-
-}
-
-
 }}}
