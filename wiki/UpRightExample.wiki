@@ -117,6 +117,25 @@ Replay log is performed when 1) the _Main_ server instance passes the informatio
                 generalCP.consumeLogDone(fileName);
         }
 }}}
+
+=== Write Checkpoint to Disk ===
+This function writes the whole application states to the disk. The application should be able to fully recover from this checkpoint without previous logs. Previous log will be discarded to save disk space. However, do not delete log files in your application. The UpRight server library will perform this task. In this example, both the hashtable and the writeCount are written to disk.
+{{{
+        @Override
+        public void sync() {
+                try {
+                        File syncFile=new File(this.syncDir+"ht_sync_"+writeCount);
+                        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(syncFile));
+                        oos.writeObject(ht);
+                        oos.writeInt(writeCount);
+                        oos.close();
+                }
+                catch (Exception e) {
+                        e.printStackTrace();
+                }
+                generalCP.syncDone(this.syncDir+"ht_sync_"+writeCount);
+        }
+}}}
 =Application Client=
 The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
 {{{
