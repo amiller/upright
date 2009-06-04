@@ -8,10 +8,10 @@ The membership and key files should be in a correct layout. For example, if ther
 {{{
 test.properties
 keys\
-  ORDER0.privk.properties
-  EXEC0.privk.properties
-  EXEC1.privk.properties
-  CLIENT0.privk.properties
+  ORDER0.privk.properties   (this file only exists on order node 0)
+  EXEC0.privk.properties    (this file only exists on server node 0)
+  EXEC1.privk.properties    (this file only exists on server node 1)
+  CLIENT0.privk.properties  (this file only exists on client 0)
 }}}
 The test.properties is the membership file and all the key files should be in the keys directory.
 
