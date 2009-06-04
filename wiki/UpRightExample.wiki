@@ -155,6 +155,22 @@ This function is performed during recovery. In this example, the application rea
         }
 }}}
 
+=== Connect Application server to UpRight ===
+The main function shows how to connect application server to UpRight. First, it creates the GeneralCP class object, which implements CPAppInterface. Then it creates the two server instances and finally calls setupApplication to register them to UpRight. This will startup the UpRight state machine.
+{{{
+        public static void main(String args[]) throws Exception{
+                if(args.length!=4){
+                        System.out.println("Usage: java Applications.hashtable <id> <config_file> <log_path> <snapshot_path>");
+                }
+                GeneralCP generalCP = new GeneralCP(Integer.parseInt(args[0]), args[1], args[2], args[3]);
+                HTServer main = new HTServer(args[2],args[3]);
+                HTServer helper = new HTServer(args[2], args[3]);
+                main.setGenCP(generalCP);
+                helper.setGenCP(generalCP);
+                generalCP.setupApplication(main, helper);
+        }
+}}}
+
 = Implement the Client=
 The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
 {{{
