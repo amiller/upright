@@ -21,3 +21,4 @@ Then, compiling the code is similar to compiling any java program, except adding
 {{{
 javac -cp uprigh.jar:CoDec-build17-jdk13.jar:FlexiCoreProvider-1.6p3.signed.jar *.java
 }}}
+For simplicity, you can also generate your own ant build.xml. The only extra thing is adding those 3 jars to your classpath.
