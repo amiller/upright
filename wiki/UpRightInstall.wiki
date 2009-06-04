@@ -16,3 +16,8 @@ There are no specific steps required to install UpRight. You just need to put th
 
 ==Compile your own program==
 First, see  [ProgrammingWithUpRight how to write a program with UpRight] and [UpRightExample a simple example].
+
+Then, compiling the code is similar to compiling any java program, except adding the UpRight and dependency libraries:
+{{{
+javac -cp uprigh.jar:CoDec-build17-jdk13.jar:FlexiCoreProvider-1.6p3.signed.jar *.java
+}}}
