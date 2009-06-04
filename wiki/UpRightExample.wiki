@@ -48,7 +48,7 @@ Initialize everything:
 }}}
 
 ===Execute a request===
-If it is read request, then get the data from the hashtable. If it is a write request, then write to hashtable and increase writeCount. Several notices here:
+If it is read request, then get the data from the hashtable. If it is a write request, then write to hashtable and increase writeCount. Call execDone finally. Several notices here:
   # This function shows how to use random number and time deterministically: use RequestInfo.getRandom() and RequestInfo.getTime() instead of using java library functions.
   # Write request is logged in this function. Most storage system requires logs to be written to disk before replying to the client. However, UpRight does not have this restriction. We can see here the server just logs the request in memory and then replies. The reason is that UpRight Core writes each request to disk and if the server crashes, the UpRight Core resends these requests to the server, so there will be no data lost.
 
@@ -78,6 +78,45 @@ If it is read request, then get the data from the hashtable. If it is a write re
         }
 }}}
 
+=== Write Log to Disk ===
+This function writes all in memory logs to disk. It calls flushDone finally. Notice that the content and the name of the log file must be deterministic. The application should not modify the log file after calling flushDone.
+{{{
+        @Override
+        public synchronized void flushAndStartNewLog(long seqNo) {
+                File logFile=new File(this.logDir+"ht_log_"+seqNo);
+                try {
+                        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(logFile));
+                        oos.writeObject(logs);
+                        oos.close();
+                        logs.clear();
+                        generalCP.flushDone(seqNo, logFile.getAbsolutePath());
+                } catch (IOException e) {
+                        e.printStackTrace();
+                }
+        }
+}}}
+
+=== Replay the Log ===
+Replay log is performed when 1) the _Main_ server instance passes the information to the _Backup_ server instance and 2) when both servers need recovery. This function reads information from the log file and update the in-memory data structures. Notice that writeCount is also updated here, even if it is not recorded in the log file.
+{{{
+        @Override
+        public void consumeLog(String fileName) {
+                ObjectInputStream is = null;
+                try {
+                        is = new ObjectInputStream(new FileInputStream(fileName));
+                        ArrayList<LogEntry> tmp=(ArrayList<LogEntry>)is.readObject();
+                        is.close();
+                        for(LogEntry e:tmp){
+                                ht.put(e.getKey(), e.getData());
+                                writeCount++;
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+
+                generalCP.consumeLogDone(fileName);
+        }
+}}}
 =Application Client=
 The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
 {{{
