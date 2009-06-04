@@ -1,6 +1,7 @@
 #summary Sample Configuration (4 Orders 4 Filters 3 Servers 4 Clients)
 
 =Membership File=
+{{{
 orderCrashFailures = 1
 orderLiarFailures = 1
 execCrashFailures = 1
