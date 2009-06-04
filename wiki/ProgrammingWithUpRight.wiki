@@ -20,7 +20,7 @@ UpRight replicates the application servers for fault tolerance. It requires c+b+
 The architecture is shown in the figure. UpRight works as follows:
   # The client issues a request to the client library.
   # The client library sends the request to UpRight Core and waits for the reply. It returns the result to the client once it has a sufficient number (b+1) of matching replies to guarantee correctness.
-  # The UpRight core agrees on the order of this request among all the requests.
+  # The UpRight core agrees on the order of requests from all clients.
   # The UpRight core sends requests to server library in order.
   # The server library sends requests to the _Main_ server instance, which will execute the request and send reply back to the server library.
   # The server library sends reply to client library.
