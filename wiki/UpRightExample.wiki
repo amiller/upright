@@ -160,7 +160,7 @@ The main function shows how to connect application server to UpRight. First, it 
 {{{
         public static void main(String args[]) throws Exception{
                 if(args.length!=4){
-                        System.out.println("Usage: java Applications.hashtable <id> <config_file> <log_path> <snapshot_path>");
+                        System.out.println("Usage: java Applications.hashtable.HTServer <id> <config_file> <log_path> <snapshot_path>");
                 }
                 GeneralCP generalCP = new GeneralCP(Integer.parseInt(args[0]), args[1], args[2], args[3]);
                 HTServer main = new HTServer(args[2],args[3]);
