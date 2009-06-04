@@ -172,7 +172,7 @@ The main function shows how to connect application server to UpRight. First, it 
 }}}
 
 = Implement the Client=
-The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
+The client code is simple. It uses ClientShimBaseNode.execute to send requests and then handle the reply.
 {{{
 package Applications.hashtable;
 
