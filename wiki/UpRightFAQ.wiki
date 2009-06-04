@@ -2,14 +2,14 @@
 
   * What kind of applications need UpRight?
 
-  * What kind of applications can use UpRight easily?
+  * What is the cost of UpRight?
 
-  * What kind of applications are not suitable for UpRight?
+  * How should I write programs with UpRight?
 
-  * How many machines do I need for UpRight?
+  * How to run the UpRight program?
 
   * What is the major difficulty in using UpRight?
 
   * What is NonDetermism and how to eliminate it?
 
-  * ...
+  * My UpRight program does not run correctly. What is the problem?
