@@ -119,7 +119,7 @@ Replay log is performed when 1) the _Main_ server instance passes the informatio
 }}}
 
 === Write Checkpoint to Disk ===
-This function writes the whole application states to the disk. The application should be able to fully recover from this checkpoint without previous logs. Previous log will be discarded to save disk space. However, do not delete log files in your application. The UpRight server library will perform this task. In this example, both the hashtable and the writeCount are written to disk.
+This function writes the whole application states to the disk. The application should be able to fully recover from this checkpoint without previous logs. Previous log will be discarded to save disk space. However, do not delete log files in your application. The UpRight server library will perform this task. In this example, both the hashtable and the writeCount are written to disk. It calls syncDone finally.
 {{{
         @Override
         public void sync() {
@@ -136,6 +136,25 @@ This function writes the whole application states to the disk. The application s
                 generalCP.syncDone(this.syncDir+"ht_sync_"+writeCount);
         }
 }}}
+
+
+=== Load the Checkpoint ===
+This function is performed during recovery. In this example, the application reads the hashtable and the writeCount from the checkpoint file. It calls loadSnapshotDone finally.
+{{{
+        @Override
+        public synchronized void loadSnapshot(String fileName) {
+                try {
+                        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
+                        ht = (LinkedHashMap<String, DataUnit>) ois.readObject();
+                        writeCount = ois.readInt();
+                        generalCP.loadSnapshotDone();
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+
+        }
+}}}
+
 =Application Client=
 The client code is simple. Use ClientShimBaseNode.execute to send requests and then handle the reply.
 {{{
@@ -172,6 +191,7 @@ public class HTClient{
         }
 }
 }}}
+
 
 =Application Server=
 The application server must implement the two sets of interfaces. In this example, the consumeLog and loadSnapshot functions in two interfaces are the same, so this application server just needs to implement five functions: execAysnc, flushAndStartNewLog, consumeLog, sync and loadSnapshot. And the main function shows how to connect the server with the UpRight server library.
