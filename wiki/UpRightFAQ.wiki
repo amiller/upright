@@ -1,7 +1,7 @@
 #summary One-sentence summary of this page.
 
   * What kind of applications need UpRight?
-    Client/Server model applications requiring high availability is usually a good target for using UpRight. UpRight can provide Byzantine Fault Tolerance, strong consistency, linearizability, failure recovery with acceptable performance.
+  Client/Server model applications requiring high availability is usually a good target for using UpRight. UpRight can provide Byzantine Fault Tolerance, strong consistency, linearizability, failure recovery with acceptable performance.
 
   * What kind of applications should not use UpRight?
 
