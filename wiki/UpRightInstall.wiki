@@ -9,7 +9,7 @@
     # If you want to recompile the UpRight Core and library, you also need to install apache ant.
 
 ==Compile UpRight==
-The current version of UpRight is fully implemented by Java, so it should be able to work on  most platforms without recompilation. If you really need to do so, download the UpRight src package, decompress it (tar -xzvf upright.tar.gz) and type "ant" in the upright directory. This will generate a "upright.jar", which is the binary of UpRight.
+The current version of UpRight is fully implemented in Java, so it should be able to work on  most platforms without recompilation. If you really need to do so, download the UpRight src package, decompress it (tar -xzvf upright.tar.gz) and type "ant" in the upright directory. This will generate a "upright.jar", which is the binary of UpRight.
 
 ==Install==
 There are no specific steps required to install UpRight. You just need to put the upright.jar and all the dependencies in the same directory and that is all.
