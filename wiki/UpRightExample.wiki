@@ -12,7 +12,7 @@ public class HTServer implements MainAppCPInterface, BackupAppCPInterface
 }}}
 
 ===Data Structures===
-The key data structure is a hashtable: (DataUnit is a triple of value, random number and timestamp):
+The key data structure is a hashtable: (DataUnit is a triple of value, random number and timestamp). Notice that for deterministic checkpoint, we use LinkedHashMap instead of HashMap/Hashtable, since the iteration of HashMap/Hashtablle is nondeterministic in Java.
 {{{
 LinkedHashMap<String, DataUnit> ht;
 }}}
