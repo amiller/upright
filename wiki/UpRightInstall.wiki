@@ -6,7 +6,7 @@
     # Install and configure Java properly.
     # [http://www.cdc.informatik.tu-darmstadt.de/flexiprovider/download/FlexiCoreProvider-1.6p4.signed.jar Download FlexiCoreProvider]
     # Download Codec
-    # If you want to recompile the UpRight Core and library, you also need to install apache ant.
+    # If you want to recompile the UpRight Core and library, you also need to install Apache Ant.
 
 ==Compile UpRight==
 The current version of UpRight is fully implemented in Java, so it should be able to work on  most platforms without recompilation. If you really need to do so, download the UpRight src package, decompress it (tar -xzvf upright.tar.gz) and type "ant" in the upright directory. This will generate a "upright.jar", which is the binary of UpRight.
@@ -21,4 +21,4 @@ Then, compiling the code is similar to compiling any java program, except adding
 {{{
 javac -cp uprigh.jar:CoDec-build17-jdk13.jar:FlexiCoreProvider-1.6p3.signed.jar *.java
 }}}
-For simplicity, you can also generate your own ant build.xml. The only extra thing is adding those 3 jars to your classpath.
+For simplicity, you can also generate your own build.xml for Apache Ant. The only extra thing is adding those 3 jars to your classpath.
