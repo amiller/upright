@@ -4,12 +4,22 @@
   Client/Server model applications requiring high availability is usually a good target for using UpRight. UpRight can provide Byzantine Fault Tolerance, strong consistency, linearizability, failure recovery with acceptable performance.
 
   * What kind of applications should not use UpRight?
+  If your application does not need high availability, then of course it does not need UpRight. UpRight is based on the Client/Server model. If your application uses other architectures, such as Peer To Peer (P2P), it is unclear whether you can use UpRight for that or not.
+
+  * What are the advantages of UpRight over other crash failure mechanisms?
+  Most existing crash failure mechanisms assume the fail/stop model, in which if the server fails, it stops to respond. In reality, we see many cases in which a failed server gives incorrect response instead of just halting. The traditional crash failure mechanism cannot handle this kind of Byzantine Faults. UpRight can provide Byzantine Fault Tolerance for the application automatically.
 
   * What is the cost of UpRight?
+  To tolerate c failures, among which b failures are Byzantine, the whole system requires b+c+1 server replicas, 2b+c+1 ordered nodes and (??) filtered nodes (optional). 
+
+  * How should I install UpRight?
+  See [UpRightInstall Installation Guide]
 
   * How should I write programs with UpRight?
+  See [ProgrammingWithUpRight Programming with UpRight] and [UpRightExample Programming Example]
 
   * How to run the UpRight program?
+  See [UpRightConfigurationExecution UpRight Configuration and Execution]
 
   * What is the major difficulty in using UpRight?
 
