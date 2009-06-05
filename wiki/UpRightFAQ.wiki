@@ -22,7 +22,9 @@
   See [UpRightConfigurationExecution UpRight Configuration and Execution]
 
   * What is the major difficulty in using UpRight?
+  As far as we know, eliminating nondeterminisms in the application is the most challenging part when programming with UpRight.
 
   * What is NonDetermism and how to eliminate it?
+  See [NonDeterminism common sources of nondetermism and how to elimate it]
 
   * My UpRight program does not run correctly. What is the problem?
