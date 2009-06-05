@@ -16,7 +16,7 @@ keys\
 The test.properties is the membership file and all the key files should be in the keys directory.
 
 =Sample Configuration Files=
-All these files can be find in the sample_config directory.
+All these sample configuration files can be found in the sample_config directory.
   * [SampleConfig1 1 Order 1 Server 1 Client on localhost]
   * [SampleConfig2 1 Order 3 Servers 1 Client on different machines]
   * [SampleConfig3 4 Orders 3 Servers 4 Clients on different machines]
