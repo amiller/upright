@@ -1,5 +1,8 @@
 #summary How to configure and run HDFS-UpRight
 
+= Download =
+  You need to donwload both the UpRight library and HDFS-UpRight.
+
 = Configuration =
 
   # UpRight must be configured properly. See [UpRightConfigurationExecution UpRight Configuration]. Notice that only namenode is replicated by UpRight, so namenodes are "UpRight servers" and datanodes are "UpRight clients". Therefore, when configuring UpRight, you should list all datanodes as clients.
