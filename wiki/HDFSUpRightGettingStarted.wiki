@@ -38,7 +38,7 @@
 }}}
 
 = Run HDFS-UpRight =
-# Start UpRight Core as described in [UpRightConfigurationExecution UpRight Configuration].
-# Start namenode: on each namenode machine, run "bin/hadoop namenode --config configDir"
-# Start datanode: on each datanode machine, run "bin/hadoop datanode --config configDir"
-# Start clients: this depends on your application.
+  # Start UpRight Core as described in [UpRightConfigurationExecution UpRight Configuration].
+  # Start namenode: on each namenode machine, run "bin/hadoop namenode --config configDir"
+  # Start datanode: on each datanode machine, run "bin/hadoop datanode --config configDir"
+  # Start clients: this depends on your application.
