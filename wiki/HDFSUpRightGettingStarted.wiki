@@ -11,16 +11,6 @@
 
 {{{
   <property>
-    <name>bft.shimId</name>
-    <value>0</value>
-  </property>
-
-  <property>
-    <name>bft.configurationFile</name>
-    <value>/users/sangmin/bft-hdfs-demo/config.properties</value>
-  </property>
-
-  <property>
     <name>dfs.bft</name>
     <value>true</value>
   </property>
@@ -28,6 +18,17 @@
   <property>
     <name>dfs.bft.datanode</name>
     <value>false</value>
+  </property>
+
+  <property>
+    <name>bft.configurationFile</name>
+    <value>/users/sangmin/bft-hdfs-demo/config.properties</value>
+  </property>
+
+
+  <property>
+    <name>bft.shimId</name>
+    <value>0</value>
   </property>
 }}}
 
