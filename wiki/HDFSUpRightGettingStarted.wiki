@@ -12,7 +12,7 @@
     # dfs.bft.datanode is a boolean value about whether to use bft datanode.
     # bft.configurationFile is the name of the UpRight configuration file generated in the first step.
     # bft.shimId is the id of the corresponding node defined in the UpRight configuration file.
-  Typically, dfs.bft and dfs.bft.datanode should be "true" and bft.configurationFile should be the same on all the nodes, but bft.shimId should be different on different machines.
+  Typically, dfs.bft and dfs.bft.datanode should be "true" and bft.configurationFile should point to the same file on all the nodes, but bft.shimId should be different on different machines.
 
 {{{
   <property>
