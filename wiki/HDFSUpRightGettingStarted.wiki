@@ -9,6 +9,27 @@
   # HDFS also needs to be configured properly. See [http://hadoop.apache.org/core/docs/current/cluster_setup.html#Configuration Hadoop Configuration].
   # Incorporate HDFS with UpRight: modify hdfs-site.xml, add ......
 
+{{{
+  <property>
+    <name>bft.shimId</name>
+    <value>0</value>
+  </property>
+
+  <property>
+    <name>bft.configurationFile</name>
+    <value>/users/sangmin/bft-hdfs-demo/config.properties</value>
+  </property>
+
+  <property>
+    <name>dfs.bft</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.bft.datanode</name>
+    <value>false</value>
+  </property>
+}}}
 
 = Run =
 
