@@ -7,7 +7,12 @@
 
   # UpRight must be configured properly. See [UpRightConfigurationExecution UpRight Configuration]. Notice that only namenode is replicated by UpRight, so namenodes are "UpRight servers" and datanodes are "UpRight clients". Therefore, when configuring UpRight, you should list all datanodes as clients.
   # HDFS also needs to be configured properly. See [http://hadoop.apache.org/core/docs/current/cluster_setup.html#Configuration Hadoop Configuration].
-  # Incorporate HDFS with UpRight: modify hdfs-site.xml, add ......
+  # Incorporate HDFS with UpRight: modify hdfs-site.xml, add the following four options.
+    # dfs.bft is a boolean value about whether to use bft namenode.
+    # dfs.bft.datanode is a boolean value about whether to use bft datanode.
+    # bft.configurationFile is the name of the UpRight configuration file generated in the first step.
+    # bft.shimId is the id of the corresponding node defined in the UpRight configuration file.
+  Typically, dfs.bft and dfs.bft.datanode should be "true" and bft.configurationFile should be the same on all the nodes, but bft.shimId should be different on different machines.
 
 {{{
   <property>
