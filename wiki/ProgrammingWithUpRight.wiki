@@ -24,11 +24,10 @@ The architecture is shown in the figure. UpRight works as follows:
   # The UpRight core sends requests to server library in order.
   # The server library sends requests to the application server, which will execute the request and send reply back to the server library.
   # The server library sends reply to client library.
-  # Periodically, the server library asks the _Main_ server instance to flush logs to disks and then the server library asks the _Backup_ server instance to load and replay the log.
-  # Periodically, the server library asks the _Backup_ server instance to perform checkpoint. The checkpoint interval is much larger than the log flush interval.
+  # Periodically, the server library asks the application server to perform checkpoint. 
 
 = Creating an UpRight Service =
-  # Server: to be incorporated into the UpRight system, the application server needs to implement two sets of interfaces: the MainAppCPInterface and BackupAppCPInterface. The first interface defines the functionality of the _Main_ server instance, including request execution, log flushing, log replay and recovery. The second interface defines the functionality of the _Backup_ server instance, including log replay, checkpoint and recovery. Notice both interfaces include functions of log replay and recovery. Actually, it is possible to use the same code for both interfaces.
+  # Server: to be incorporated into the UpRight system, the application server needs to implement a interface *AppCPInterface*. This interface defines the functionality of the application, including request execution, checkpoint and recovery. 
   # Client: the client library provides an interface to send requests. The application client should use this interface instead of sending requests to sockets.
 For details of these interfaces, see [InterfaceSpecification interface specification]. <br/>
 We have provided an example of how to build an UpRight Service. It is a remote hashtable, in which clients can set or get key/value pairs on the server. The example is rather simple, but has all the features described above. [UpRightExample Go to the example].
