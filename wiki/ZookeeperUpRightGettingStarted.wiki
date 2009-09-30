@@ -1,13 +1,20 @@
 #summary How to run Zookeeper-UpRight
 
-= Introduction =
+#summary How to configure and run HDFS-UpRight
 
-Add your content here.
+= Download =
+  First, you need to download Zookeeper-UpRight and decompress it. Concurrently, we provide three versions of Zookeeper using blocking snapshot, Primary-Backup snapshot and COW snapshot.
 
+= Configuration =
+  # UpRight must be configured properly. See [UpRightConfigurationExecution UpRight Configuration]. 
+  # Zookeeper also needs to be configured properly. See [http://hadoop.apache.org/zookeeper/docs/current/zookeeperAdmin.html#sc_configuration Zookeeper Administrator's Guide]. We've provided a sample configuration. Notice: Cluster options are not used in Zookeeper-UpRight.
+  
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Run HDFS-UpRight =
+  # Start UpRight Core as described in [UpRightConfigurationExecution UpRight Configuration].
+  # Start Zookeeper server: 
+{{{
+java -Djava.library.path=. -cp conf:zookeeper-dev.jar:log4j-1.2.15.jar:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  org.apache.zookeeper.server.quorum.QuorumPeerMain id current.properties conf/zoo_sample.cfg
+}}}
+  # Start client: this depends on your application.
+  # We've provided a script start_replicated.sh to start all the server nodes, including UpRight Core nodes and Zookeepr server nodes.
