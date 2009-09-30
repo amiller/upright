@@ -1,7 +1,5 @@
 #summary How to run Zookeeper-UpRight
 
-#summary How to configure and run HDFS-UpRight
-
 = Download =
   First, you need to download Zookeeper-UpRight and decompress it. Concurrently, we provide three versions of Zookeeper using blocking snapshot, Primary-Backup snapshot and COW snapshot.
 
