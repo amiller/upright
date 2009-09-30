@@ -18,9 +18,10 @@ The UpRight library provides the *CPAppInterface* for the application to communi
 
 
 ==Notices==
-  * Never modify a log file or a snapshot file after returning it to UpRight.
-  * The application must provide determined log and snapshot files. This means that after executing the same sequence of requests, the server should give the same log and snapshot file. There should be no randomness in these files. In reality, time, multi thread, etc, can cause non-determinisms and they should be carefully avoided.
+  * The application server should never modify a snapshot file after returning it to UpRight by calling syncDone.
+  * The application must provide deterministic snapshot files. There should be no randomness in these files. In reality, time, multi thread, etc, can cause non-determinisms and they should be carefully avoided.
 
 =Application Client=
-UpRight takes care of the network communication, so the client should not touch any socket code any more. Instead, UpRight provides a function for clients to send requests:
-  * ClientShimInterface.execute: the request will be passed to the application server through the execAsync interface. Currently, execute is a blocking call and it will wait for the reply from the server.
+UpRight takes care of the network communication, so the client should not touch any socket code any more. Instead, UpRight provides a interface *ClientShimInterface* for clients to send requests:
+  * execute: the request will be passed to the application server through the execAsync interface. Currently, execute is a blocking call and it will wait for the reply from the server.
+  * executeReadonly: the request will be passed to the application server through the execReadonly interface.
