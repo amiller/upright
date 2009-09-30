@@ -14,7 +14,8 @@
   # Start UpRight Core as described in [UpRightConfigurationExecution UpRight Configuration].
   # Start Zookeeper server: 
 {{{
-java -Djava.library.path=. -cp conf:zookeeper-dev.jar:log4j-1.2.15.jar:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar  org.apache.zookeeper.server.quorum.QuorumPeerMain id current.properties conf/zoo_sample.cfg
+java -Djava.library.path=. -cp conf:zookeeper-dev.jar:log4j-1.2.15.jar:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar 
+org.apache.zookeeper.server.quorum.QuorumPeerMain id current.properties conf/zoo_sample.cfg
 }}}
   # Start client: this depends on your application.
   # We've provided a script start_replicated.sh to start all the server nodes, including UpRight Core nodes and Zookeepr server nodes.
