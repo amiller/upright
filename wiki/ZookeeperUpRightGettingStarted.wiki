@@ -10,13 +10,13 @@
   # Zookeeper also needs to be configured properly. See [http://hadoop.apache.org/zookeeper/docs/current/zookeeperAdmin.html#sc_configuration Zookeeper Administrator's Guide]. We've provided a sample configuration. Notice: Cluster options are not used in Zookeeper-UpRight.
   
 
-= Run HDFS-UpRight =
+= Run Zookeeper-UpRight =
   # Start UpRight Core as described in [UpRightConfigurationExecution UpRight Configuration].
   # Start Zookeeper server: 
 {{{
 java -Djava.library.path=. -cp conf:zookeeper-dev.jar:log4j-1.2.15.jar:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar 
 org.apache.zookeeper.server.quorum.QuorumPeerMain id current.properties conf/zoo_sample.cfg
 }}}
-  id is the integer identifier of the server. For the first server, it should be 0. For the second one, it's 1, etc. You need to run this command on all the server machines.
+  id is the integer identifier of the server. For the first server, it should be 0. For the second one, it's 1, etc. current.properties is the UpRight configuration file and zoo_sample.cfg is the Zookeeper configuration file. You need to run this command on all the server machines.
   # Start client: this depends on your application.
   # We've provided a script start_replicated.sh to start all the server nodes, including UpRight Core nodes and Zookeepr server nodes.
