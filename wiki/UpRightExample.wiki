@@ -8,7 +8,7 @@ First, the programmer must define the request and reply between client and serve
 =Implement the Server=
 The server implementation is mainly in HTServer.java. The server class must implement the two server interfaces:
 {{{
-public class HTServer implements MainAppCPInterface, BackupAppCPInterface
+public class HTServer implements AppCPInterface{
 }}}
 
 ===Data Structures===
@@ -24,34 +24,26 @@ The CPAppInterface provides the callback for each function. We will show how to 
 {{{
 CPAppInterface generalCP=null;
 }}}
-We use an ArrayList to cache requests. This ArrayList serves as an in memory log and when the server library asks to write log to disk, we write this whole ArrayList to a file and then clear the ArrayList.
+And one string is used to store the directory to snapshot file.
 {{{
-ArrayList<LogEntry> logs=new ArrayList<LogEntry>();
-}}}
-And two strings are used to store the directory to write log and checkpoint file. We can see later these two are used when instantiating the CPAppInterface object. These two strings can be the same, which means checkpoint and log can be stored in the same directory.
-{{{
-private String logDir=null;
 private String syncDir=null;
 }}}
 ===Constructor===
 Initialize everything:
 {{{
-        public HTServer(String logDir, String syncDir) throws IOException {
-               this.logDir=logDir+File.separator;
+        public HTServer(String syncDir, int id) throws IOException {
                 this.syncDir=syncDir+File.separator;
+                this.id=id;
                 ht = new LinkedHashMap<String, DataUnit>();
-                File logDir2 = new File(this.logDir);
-                logDir2.mkdirs();
                 File syncDir2 = new File(this.syncDir);
                 syncDir2.mkdirs();
         }
+
 }}}
 
 ===Execute a request===
-If it is a read request, then get the data from the hashtable. If it is a write request, then modify the hashtable and increase writeCount. Call execDone finally. Several notices here:
+If it is a read request, then get the data from the hashtable. If it is a write request, then modify the hashtable and increase writeCount. Call execDone finally.
   # This function shows how to use random number and time deterministically: use RequestInfo.getRandom() and RequestInfo.getTime() instead of using java library functions.
-  # Write request is logged in this function. Most storage system requires logs to be written to disk before replying to the client. However, UpRight does not have this restriction. We can see here the server just logs the request in memory and then replies. The reason is that UpRight Core writes each request to disk and if the server crashes, the UpRight Core resends these requests to the server, so there will be no data lost.
-
 
 {{{
         @Override
@@ -66,60 +58,28 @@ If it is a read request, then get the data from the hashtable. If it is a write 
                                 rep = new HTReply(true, null);
                         }
                 } else {        // WRITE operation
-                        //Write requests must be logged. 
                         DataUnit data=new DataUnit(req.getValue(), info.getRandom(), info.getTime());
-                        logs.add(new LogEntry(key,data));
                         ht.put(key, data);
                         writeCount++;
                         rep = new HTReply(false, null);
                 }
                 generalCP.execDone(Convert.objectToBytes(rep), info);
 
+
         }
 }}}
 
-=== Write Log to Disk ===
-This function writes all in memory logs to disk. It calls flushDone finally. Notice that the content and the name of the log file must be deterministic. The application should not modify the log file after calling flushDone.
+Readonly optimization is not used in this example, so leave execReadonly not implemented.
 {{{
-        @Override
-        public synchronized void flushAndStartNewLog(long seqNo) {
-                File logFile=new File(this.logDir+"ht_log_"+seqNo);
-                try {
-                        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(logFile));
-                        oos.writeObject(logs);
-                        oos.close();
-                        logs.clear();
-                        generalCP.flushDone(seqNo, logFile.getAbsolutePath());
-                } catch (IOException e) {
-                        e.printStackTrace();
-                }
+        //@Override
+        public void execReadonly(byte[] request, int clientId, long requestId){
+                throw new RuntimeException("Not implemented");
         }
 }}}
 
-=== Replay the Log ===
-Replay log is performed when 1) the _Main_ server instance passes the information to the _Backup_ server instance and 2) when both servers need recovery. This function reads information from the log file and update the in-memory data structures. Notice that writeCount is also updated here, even if it is not recorded in the log file.
-{{{
-        @Override
-        public void consumeLog(String fileName) {
-                ObjectInputStream is = null;
-                try {
-                        is = new ObjectInputStream(new FileInputStream(fileName));
-                        ArrayList<LogEntry> tmp=(ArrayList<LogEntry>)is.readObject();
-                        is.close();
-                        for(LogEntry e:tmp){
-                                ht.put(e.getKey(), e.getData());
-                                writeCount++;
-                        }
-                } catch (Exception e) {
-                        e.printStackTrace();
-                }
 
-                generalCP.consumeLogDone(fileName);
-        }
-}}}
-
-=== Write Checkpoint to Disk ===
-This function writes the whole application states to the disk. The application should be able to fully recover from this checkpoint without previous logs. Previous log will be discarded to save disk space. However, do not delete log files in your application. The UpRight server library will perform this task. In this example, both the hashtable and the writeCount are written to disk. It calls syncDone finally. Similarly, the name of the checkpoint file should be deterministic.
+=== Write snapshot to Disk ===
+This function writes the whole application states to the disk. The application should be able to fully recover from this snapshot. In this example, both the hashtable and the writeCount are written to disk. It calls syncDone finally. Both the name and the content of the checkpoint file should be deterministic.
 {{{
         @Override
         public void sync() {
