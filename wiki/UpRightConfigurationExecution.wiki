@@ -1,6 +1,6 @@
 #summary How to config and run UpRight
 
-First, users need to decide how many and what kinds of faults the system need to tolerate. Let b be the total number of Byzantine faults and c be the total number of faults (including Byzantine faults), then the whole system requires 2b+c+1 ordered nodes and b+c+1 execution nodes. If filtered node is used, it also requires 2c+b+1 filtered nodes. Notice that b and c for different nodes can be different. E.g., you can set b of ordered nodes to 1 and set b of servers to 2.
+First, users need to decide how many and what kinds of faults the system need to tolerate. Let r be the total number of Byzantine faults and u be the total number of faults (including Byzantine faults, so u>=r), then the whole system requires 2u+r+1 ordered nodes and 2u+1 execution nodes. If filtered node is used, it also requires 2u+r+1 filtered nodes. Notice that u and r for different nodes can be different. E.g., you can set u of ordered nodes to 1 and set u of servers to 2.
 
 The configuration requires one membership file and several key files. The membership file defines the public information of all the nodes, including IP, ports, public keys, etc and this file should be distributed to every node. The key files define the private keys of all the nodes and they should only be distributed to the corresponding nodes.
 
@@ -29,7 +29,7 @@ Steps:
   # Modify the file "servers". List all the machines used as servers.
   # Modify the file "clients". List all the machines used as clients.
   # Modify the file "filters". List all the machines used as filtered nodes. Leave it as blank if no filtered nodes are used.
-  # Run bftConfigGenerator.sh to generate the membership and key files. This script takes 8 arguments: 1 order crash failures; 2 order liar failures; 3 server crash failures; 4 server liar failures; 5 client number; 6 whether use filtered node or not; 7 filter crash failures; 8 filter liar failures. 6-8 are optional. If there are no 6-8, no filter nodes are used. For example, to generate a (1 order 3 server 1 client) configuration, the command should be "bftConfigGenerator 0 0 1 1 1 >config.properties". And private key files are put into keys directory automatically.
+  # Run bftConfigGenerator.sh to generate the membership and key files. This script takes 8 arguments: 1 u of order nodes; 2 r of order nodes; 3 u of server nodes; 4 r of server nodes; 5 client number; 6 whether use filtered node or not; 7 u of filter nodes; 8 r of filter nodes. 6-8 are optional. If there are no 6-8, no filter nodes are used. For example, to generate a (1 order 3 server 1 client) configuration, the command should be "bftConfigGenerator 0 0 1 1 1 >config.properties". And private key files are put into keys directory automatically.
 
 ===Notices===
   # The number of nodes in the orders/servers/clients/filters/ files should match with the argument of bftConfigGenerator command. For example, bftConfigGenerator 0 0 1 0 1 requires two server nodes. Then there should be two lines in the servers file. Otherwise, bftConfigGenerator will report an error.
