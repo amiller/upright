@@ -1,13 +1,13 @@
 #summary The interface specification.
 
 =Server Interface=
-The application should implement *AppCPInterface*. It includes four functions:
+The application should implement *BFT.generalcp.AppCPInterface*. It includes four functions:
   * execAsync: execute a request. After finished, the application should call CPAppInterface.execDone to send the result back.
   * execReadonly: execute a readonly request. UpRight provides optimization for readonly requests and they are much faster than normal requests. After finished, the application should call CPAppInterface.execReadonlyDone to send the result back.
   * sync: write all the application states into a snapshot file. Call CPAppInterface.syncDone when finished.
   * loadSnapshot: load the snapshot file. This is a blocking call.
 
-The UpRight library provides the *CPAppInterface* for the application to communicate with the UpRight library:
+The UpRight library provides the *BFT.generalcp.CPAppInterface* for the application to communicate with the UpRight library:
   * setupApplication: register the application server to the UpRight library. *This function starts the UpRight server library*.
   * execDone: callback for execAsync
   * execReadonlyDone: callback for execReadonly
