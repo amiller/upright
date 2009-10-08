@@ -5,7 +5,7 @@
   * Get source code from svn (if you just want to run UpRight, you do not need the source code)
 
 ==Compile UpRight==
-The current version of UpRight is fully implemented in Java, so it should be able to work on  most platforms without recompilation. If you really need to do so, check out the UpRight source code from svn and type "ant" in the directory. This will generate a "upright.jar", which is the binary of UpRight.
+The current version of UpRight is fully implemented in Java, so it should be able to work on  most platforms without recompilation. If you really need to do so, check out the UpRight source code from svn and type "ant" in the directory. This will generate a "bft.jar" in upright/dist/lib, which is the binary of UpRight.
 
 ==Install==
 There are no specific steps required to install UpRight. You just need to decompress the binary package (tar -xzvf upright.tar.gz). If you recompile the source code, you need to copy the dist/lib/bft.jar to the binary directory.
