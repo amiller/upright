@@ -5,7 +5,8 @@ UpRight provides libraries for both application clients and servers. By connecti
 = Model =
 
 == State machine replication ==
-UpRight replicates the application servers for fault tolerance. It requires c+b+1 replicas to tolerate up to c faults of which b may be Byzantine. E.g., 2 servers (c=1, b=0) can keep working even if one crashes (but have trouble if either is incorrect); E.g., 3 servers (c=1, b=1) can keep working even if 1 replica crashes or starts giving the wrong responses.
+UpRight replicates the application servers for fault tolerance. It requires c+max(c,b)+1 replicas to tolerate up to c faults of which b may be Byzantine. Generally speaking, c is greater than b, so the number would be 2c+1.
+Notice: (c=1,b=0) and (c=1,b=1) configurations both require 3 servers, but (c=1,b=0) will have better performance than (c=1,b=1), since it does not need to handle Byzantine failure.
 
 == Requirements for state machine replication==
   * *Ordered requests*: requests from all clients must be executed and responded in the same order on all server replicas. UpRight compares the responses from different replicas. If one response is different from the others, it is considered to be incorrect. To be accurate, UpRight requires at least b+1 same responses for one request. Ordered requests also provides strong consistency and linearizability for the system. The ordered nodes (2b+c+1 nodes) in UpRight Core guarantees that the requests arrive at all the replicas in the same order. All the server replicas need to do is to execute these requests and send responses in exactly the same order.
