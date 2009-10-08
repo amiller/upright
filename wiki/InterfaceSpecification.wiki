@@ -18,7 +18,7 @@ The UpRight library provides the *BFT.generalcp.CPAppInterface* for the applicat
 
 
 ==Notices==
-  * A *readonly* requests is NOT simply a read request. It should not modify any states in the application server, which will to be written to the snapshot file. For example, if you keep a counter for read requests and the counter is written to the snapshot file, then the read is not readonly. If you just keep the counter in memory, then it is OK.
+  * A *readonly* request is NOT simply a read request. It should not modify any states in the application server, which will to be written to the snapshot file. For example, if you keep a counter for read requests and the counter is written to the snapshot file, then the read is not readonly. If you just keep the counter in memory and the counter does not affect any responses, then it is OK.
   * The application server should never modify, delete, rename or move a snapshot file after returning it to UpRight by calling syncDone. The UpRight library will perform the garbage collection.
   * The application must provide deterministic snapshot files. There should be no randomness in these files. In reality, time, multi thread, etc, can cause non-determinisms and they should be carefully avoided.
 
