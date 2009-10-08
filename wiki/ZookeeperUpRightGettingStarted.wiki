@@ -9,6 +9,8 @@
   
 
 = Run Zookeeper-UpRight =
+  You can run it manually or use our script. If you put Zookeeper-UpRight files in different directories on different machines, then you need to do this manually. Otherwise, you can use our script.
+== Run manually ==
   * Start UpRight Core as described in [UpRightConfigurationExecution UpRight Configuration].
   * Start Zookeeper server (id is the integer identifier of the server. For the first server, it should be 0. For the second one, it's 1, etc. current.properties is the UpRight configuration file and zoo_sample.cfg is the Zookeeper configuration file. You need to run this command on all the server machines): 
 {{{
@@ -17,4 +19,5 @@ org.apache.zookeeper.server.quorum.QuorumPeerMain id current.properties conf/zoo
 }}}
   
   * Start client: this depends on your application.
+== Run the script ==
   We've provided a script start_replicated.sh to start all the server nodes, including UpRight Core nodes and Zookeepr server nodes. Still you need to generate the configuration file first, and then you need to modify configuration.sh for basic configurations, mainly including some directory information, and then you can execute start_replicated.sh. Finally, you can go to your first client machine to run generate_data.sh. If it succeeds, then it is OK. Run stop_servers.sh to kill all server nodes.
