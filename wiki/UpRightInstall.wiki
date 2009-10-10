@@ -1,7 +1,7 @@
 #summary Download and Install UpRight
 
 ==Download==
-  * [http://upright.googlecode.com/files/zookeeper_upright.tar.gz Download binary code]
+  * [http://upright.googlecode.com/files/upright.tar.gz Download binary code]
   * Get source code from [http://code.google.com/p/upright/source/checkout svn] (if you just want to run UpRight, you do not need the source code)
 
 ==Compile UpRight==
