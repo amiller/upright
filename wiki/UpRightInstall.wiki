@@ -2,7 +2,7 @@
 
 ==Download==
   * [http://upright.googlecode.com/files/zookeeper_upright.tar.gz Download binary code]
-  * Get source code from svn (if you just want to run UpRight, you do not need the source code)
+  * Get source code from [http://code.google.com/p/upright/source/checkout svn] (if you just want to run UpRight, you do not need the source code)
 
 ==Compile UpRight==
 The current version of UpRight is fully implemented in Java, so it should be able to work on  most platforms without recompilation. If you really need to do so, check out the UpRight source code from svn and type "ant" in the directory. This will generate a "bft.jar" in upright/dist/lib, which is the binary of UpRight.
