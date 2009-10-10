@@ -16,6 +16,6 @@ First, see  [ProgrammingWithUpRight how to write a program with UpRight] and [Up
 
 Then, compiling the code is similar to compiling any java program, except adding the UpRight and dependency libraries:
 {{{
-javac -cp uprigh.jar:CoDec-build17-jdk13.jar:FlexiCoreProvider-1.6p3.signed.jar *.java
+javac -cp uprigh.jar:CoDec-build17-jdk13.jar:FlexiCoreProvider-1.6p3.signed.jar:netty-3.1.4.GA.jar *.java
 }}}
 For simplicity, you can also generate your own build.xml for Apache Ant. The only extra thing is adding those 3 jars to your classpath.
