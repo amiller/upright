@@ -2,6 +2,7 @@
 
 = Download =
   [http://upright.googlecode.com/files/zookeeper_upright.tar.gz Binary package]
+
   [http://code.google.com/p/upright/source/checkout Get source code from svn]
 
 = Configuration =
