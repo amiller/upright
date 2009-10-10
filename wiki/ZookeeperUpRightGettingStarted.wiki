@@ -1,7 +1,8 @@
 #summary How to run Zookeeper-UpRight
 
 = Download =
-  First, you need to download Zookeeper-UpRight and decompress it. Concurrently, we provide three versions of Zookeeper using blocking snapshot, Primary-Backup snapshot and COW snapshot.
+  [http://upright.googlecode.com/files/zookeeper_upright.tar.gz Binary package]
+  [
 
 = Configuration =
   # UpRight must be configured properly. See [UpRightConfigurationExecution UpRight Configuration]. 
