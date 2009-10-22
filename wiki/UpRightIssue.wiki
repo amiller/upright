@@ -19,3 +19,4 @@
   # Stable storage
     * We currently record to stable storage everywhere
     * We do not currently read from stable storage at the order/filter nodes.
+  # Kill/restart server experiment fails for readonly workload.
