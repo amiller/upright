@@ -16,6 +16,7 @@
   # View Change
     * Is a "everybody is correct" stub.  needs to be transitioned to implement full BFT view definition
     * Viewchangeack message definition needs to be updated
+    * Does not work with r < u
   # Stable storage
     * We currently record to stable storage everywhere
     * We do not currently read from stable storage at the order/filter nodes.
