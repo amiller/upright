@@ -1,4 +1,4 @@
-#TBD list and Known Issues about HDFS-UpRight
+#summary TBD list and Known Issues about HDFS-UpRight
 
 = TBD =
   # Dynamic Client Membership: This feature is required by MapReduce.
