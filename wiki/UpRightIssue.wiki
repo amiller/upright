@@ -1,0 +1,21 @@
+#TBD list and known issues of UpRight
+
+= TBD =
+
+  # Dynamic client membership
+  # Dynamic server membership
+  # Update MAC/signatures (replace MACs over time, related to dynamic membership above)
+  # Support multiple outstanding requests per client
+  # Support larger numbers of clietns (currently cap around 512 due to socket issues)
+
+
+= Known Issues =
+  # Failure Detection
+    * Current behavior is throw an exception
+    * Need to add "deployment mode" that logs failures and continues to run
+  # View Change
+    * Is a "everybody is correct" stub.  needs to be transitioned to implement full  BFT view definition
+    * Viewchangeack message definition needs to be updated
+Stable storage
+    * We currently record to stable storage everywhere
+    * we do not currently read from stable storage at the order/filter nodes.
