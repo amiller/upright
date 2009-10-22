@@ -18,4 +18,4 @@
     * Viewchangeack message definition needs to be updated
   # Stable storage
     * We currently record to stable storage everywhere
-    * we do not currently read from stable storage at the order/filter nodes.
+    * We do not currently read from stable storage at the order/filter nodes.
