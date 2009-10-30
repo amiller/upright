@@ -1,4 +1,4 @@
-#Overview of UpRight-HDFS
+#summary Overview of UpRight-HDFS
 
 = UpRight-HDFS NameNode =
 UpRight-HDFS NameNode enhances HDFS NameNode by eliminating a single point of failure and improving availability by supporting redudant NameNodes with automatic failover and by providing end-to-end Byzatine fault tolerance.
