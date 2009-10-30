@@ -9,6 +9,7 @@ You need to donwload both the [http://upright.googlecode.com/files/upright.tar.g
  # HDFS also needs to be configured properly. See [http://hadoop.apache.org/core/docs/current/cluster_setup.html#Configuration Hadoop Configuration].
  # Modify hadoop-site.xml to add the following two properties.
     * _dfs.bft_ : whether to use UpRight replication for namenode or not.
+    * _dfs.bft.clientGlue.rpcport_ : a port number used by a UpRight client proxy to run its rpc server
     * _dfs.bft.datanode_ : whether to use UpRight datanode or not.
 
 {{{
@@ -17,9 +18,14 @@ You need to donwload both the [http://upright.googlecode.com/files/upright.tar.g
     <value>true</value>
   </property>
 
+ <property>
+    <name>dfs.bft.clientGlue.rpcport</name>
+    <value>8787</value>
+  </property>
+
   <property>
     <name>dfs.bft.datanode</name>
-    <value>false</value>
+    <value>true</value>
   </property>
 
 }}}
