@@ -36,7 +36,7 @@ Also format HDFS for the helper:
 Then start a helper namenode first:
    `bin/hadoop [--config <PathToHDFSConfigDir>] namenode -helper &`
 And finally start a primary namenode:
-   `bin/hadoop [--config <PathToHDFSConfigDir>] namenode -shimid <UpRightServerID> -uprightconfig <PathToUpRightConfigFile>`
+   `bin/hadoop [--config <PathToHDFSConfigDir>] namenode -shimid <UpRightServerID> -uprightconfig <PathToUpRightConfigFile> &`
 
 Typically you will also want to redirect stdout and stderr of primary/helper namenode to some log files. The following is an example of sequence of commands to run the first namenode replica:
 {{{
