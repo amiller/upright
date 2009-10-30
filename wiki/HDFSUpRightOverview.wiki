@@ -1,6 +1,6 @@
 #summary Overview of UpRight-HDFS
 
-*_NOTE_* : Current UpRight-HDFS is based on the HDFS revision r705662 from [http://hadoop.apache.org/hdfs/version_control.html HDFS Version Control System].
+*_NOTE_* : Current UpRight-HDFS is based on the HDFS revision `r705662` from [http://hadoop.apache.org/hdfs/version_control.html HDFS Version Control System].
 
 = UpRight-HDFS NameNode =
 UpRight-HDFS NameNode enhances HDFS NameNode by eliminating a single point of failure and improving availability by supporting redudant NameNodes with automatic failover and by providing end-to-end Byzatine fault tolerance.
