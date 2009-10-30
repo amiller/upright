@@ -4,9 +4,10 @@
 You need to donwload both the [http://upright.googlecode.com/files/upright.tar.gz UpRight] library and the [http://upright.googlecode.com/files/hdfs-upright-0.1.tar.gz HDFS-UpRight].
 
 = Configuration =
-# UpRight must be configured properly. See [UpRightConfigurationExecution UpRight Configuration]. Notice that only namenode is replicated by UpRight, so namenodes are "UpRight servers" and datanodes are "UpRight clients". Therefore, when configuring UpRight, you should list all datanodes as clients.
-# HDFS also needs to be configured properly. See [http://hadoop.apache.org/core/docs/current/cluster_setup.html#Configuration Hadoop Configuration].
-# Modify hadoop-site.xml to add the following two properties.
+
+ # UpRight must be configured properly. See [UpRightConfigurationExecution UpRight Configuration]. Notice that only namenode is replicated by UpRight, so namenodes are "UpRight servers" and datanodes are "UpRight clients". Therefore, when configuring UpRight, you should list all datanodes as clients.
+ # HDFS also needs to be configured properly. See [http://hadoop.apache.org/core/docs/current/cluster_setup.html#Configuration Hadoop Configuration].
+ # Modify hadoop-site.xml to add the following two properties.
     * _dfs.bft_ : whether to use UpRight replication for namenode or not.
     * _dfs.bft.datanode_ : whether to use UpRight datanode or not.
 
@@ -50,7 +51,7 @@ Typically you will also want to redirect stdout and stderr of primary/helper nam
  $ bin/hadoop namenode -shimid 0 -uprightconfig ./uprightConfig 2>&1 logs/primary_0.log  &
 }}}
  
-== Start UpRight client proxy ==
+== Start UpRight client proxies ==
 On each machine on which a HDFS datanode or HDFS clients run, 
   `bin/hadoop [--config <PathToHDFSConfigDir>] uprightclientproxy <UpRightClientID> <PathToUpRightConfigFile>`
 Following is an example to run an UpRight client proxy:
@@ -59,4 +60,4 @@ $ bin/hadoop uprightclientproxy 0 ./uprightConfig 2>&1 logs/clientproxy_0.log  &
 }}}
 
 == Start datanodes and clients ==
-At this point, you can run datanodes and any applications that run on HDFS in a same way as original HDFS.
+At this point, you can run datanodes and any applications that run on HDFS in the same way as original HDFS.
