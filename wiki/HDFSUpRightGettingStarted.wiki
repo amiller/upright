@@ -45,7 +45,7 @@ Typically you will also want to redirect stdout and stderr of primary/helper nam
  $ bin/hadoop namenode -helper -format
 
  Starting a helper namenode
- $ bin/hadoop namenode -helper 2>&1 logs/helper.log &
+ $ bin/hadoop namenode -helper 2>&1 logs/helper_0.log &
 
  Starting a primary namenode
  $ bin/hadoop namenode -shimid 0 -uprightconfig ./uprightConfig 2>&1 logs/primary_0.log  &
