@@ -1,5 +1,7 @@
 #summary TBD list and known issues of UpRight
 
+=UpRight is demonstration quality code. We do not recommend deploying important services on it (yet). We're working to improve the code. Help us by trying UpRight with your application and telling us how it goes.=
+
 = TBD =
 
   # Dynamic client membership
