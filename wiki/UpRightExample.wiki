@@ -69,7 +69,7 @@ If it is a read request, then get the data from the hashtable. If it is a write 
         }
 }}}
 
-The read only optimization is not used in this example, so leave execReadonly not implemented. For more information on the read only optimization, see [InterfaceSpecification].
+The read only optimization is not used in this example, so leave execReadonly not implemented. For more information on the read only optimization, see [Server Interface InterfaceSpecification].
 {{{
         @Override
         public void execReadonly(byte[] request, int clientId, long requestId){
