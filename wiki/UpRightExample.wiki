@@ -1,22 +1,22 @@
 #summary A simple example of how to implement the upright interfaces.
 
-The source code of this example can be found in Applications/hashtable. This example application provides the functions of a remote hashtable, in which the client can read or write a key-value pair on the server. To illustrate how to handle nondeterminism in server replicas, we extended the functions of the hashtable a bit: when the server receives a write request, it also records the modification time in the hashtable. Furthermore, it also generates a random number for this key/value pair. The client can read the random number and timestamp through the read request.
+The source code of this example can be found in Applications/hashtable. This example application provides a remote hashtable, in which the clients can read or write key-value pairs on the replicated server. To illustrate how to handle nondeterminism in server replicas, we extended the functions of the hashtable a bit: when the server receives a write request, it also records the modification time in the hashtable. Furthermore, it also generates a random number for this key/value pair. The client can read the random number and timestamp through the read request.
 
 =Define Requests and Replies=
-First, the programmer must define the request and reply between client and server. In this example, they are defined in HTRequest.java and HTReply.java. These two files are simple and this step is of no difference to other distributed systems, so we do not describe it in detail. UpRight library considers all requests and replies as byte arrays, so we also provided Convert.java to convert objects to and from byte arrays.
+First, the programmer must define the request and reply messages between the clients and server. In this example, they are defined in HTRequest.java and HTReply.java. These two files are simple, and this step is no different than on other distributed systems, so we do not describe it in detail. The UpRight library regards all requests and replies as byte arrays, so we also provided Convert.java to convert objects to and from byte arrays.
 
 =Implement the Server=
-The server implementation is mainly in HTServer.java. The server class must implement the two server interfaces:
+The server implementation is mainly in HTServer.java. The server class must implement the UpRight server interfaces:
 {{{
 public class HTServer implements AppCPInterface{
 }}}
 
 ===Data Structures===
-The key data structure is a hashtable: (DataUnit is a triple of value, random number and timestamp). Notice that for deterministic checkpoint, we use LinkedHashMap instead of HashMap/Hashtable, since the iteration of HashMap/Hashtablle is nondeterministic in Java.
+The key data structure is a hashtable: (DataUnit is a triple of value, random number, and timestamp). Notice that for deterministic checkpoints, we use LinkedHashMap instead of HashMap/Hashtable, since iteration on a standard HashMap or Hashtable is nondeterministic in Java.
 {{{
 LinkedHashMap<String, DataUnit> ht;
 }}}
-To demonstrate how to keep states, we also add an extra variable, which is added by one for each write operation.
+To demonstrate how to keep states, we also add an extra variable, which is incremented by one for each write operation.
 {{{
 int writeCount=0;
 }}}
@@ -24,7 +24,7 @@ The CPAppInterface provides the callback for each function. We will show how to 
 {{{
 CPAppInterface generalCP=null;
 }}}
-And one string is used to store the directory to snapshot file.
+And one string is used to store the directory of the snapshot file.
 {{{
 private String syncDir=null;
 }}}
@@ -69,7 +69,7 @@ If it is a read request, then get the data from the hashtable. If it is a write 
         }
 }}}
 
-Readonly optimization is not used in this example, so leave execReadonly not implemented.
+The read only optimization is not used in this example, so leave execReadonly not implemented. For more information on the read only optimization, see [FAQ].
 {{{
         @Override
         public void execReadonly(byte[] request, int clientId, long requestId){
@@ -79,7 +79,7 @@ Readonly optimization is not used in this example, so leave execReadonly not imp
 
 
 === Write snapshot to Disk ===
-This function writes the whole application states to the disk. The application should be able to fully recover from this snapshot. In this example, both the hashtable and the writeCount are written to disk. It calls syncDone finally. Both the name and the content of the checkpoint file should be deterministic.
+This function writes the application state to the disk. The application should be able to fully recover from this snapshot. In this example, both the hashtable and the writeCount are written to disk. It calls syncDone finally. Both the name and the content of the checkpoint file must be deterministic.
 {{{
         @Override
         public void sync() {
@@ -115,7 +115,7 @@ This function is performed during recovery. In this example, the application rea
 }}}
 
 === Connect Application server to UpRight ===
-The main function shows how to connect application server to UpRight. First, it creates the GeneralCP class object, which implements CPAppInterface. Then it creates the two server instances and finally calls setupApplication to register them to UpRight. This will startup the UpRight state machine.
+The main function shows how to connect the application server to UpRight. First, it creates the GeneralCP class object, which implements CPAppInterface. Then it creates the two server instances and finally calls setupApplication to register them to UpRight. This will startup the UpRight state machine.
 {{{
         public static void main(String args[]) throws Exception{
                 if(args.length!=4){
