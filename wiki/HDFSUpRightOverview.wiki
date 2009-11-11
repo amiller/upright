@@ -5,18 +5,27 @@
 = UpRight-HDFS NameNode =
 UpRight-HDFS NameNode enhances HDFS NameNode by eliminating a single point of failure and improving availability by supporting redudant NameNodes with automatic failover and by providing end-to-end Byzatine fault tolerance.
 UpRight-HDFS also can be built straightforwardly by using the UpRight framework.
+As the figure below illustrates, when u=1 and r=0, UpRight-HDFS replicates the HDFS NameNode to three machines.
+Then, even if any of these machines crashes, the system remains available.
+Later, when the crashed node recovers, UpRight-HDFS automatically brings its state up to date.
+We report on our experience with UpRight-HDFS in a [http://www.sigops.org/sosp/sosp09/papers/clement-sosp09.pdf paper].
+In summary, performance is quite good.
 
 == NameNodes ==
-Especially, UpRight-HDFS employs a [ProgrammingWithUpRight Primary-Helper approach] to generate checkpoints.  Also, in order to adapt to the UpRight framework, HDFS NameNode is modified to implement [InterfaceSpecification the interface exposed by the UpRight Server Library] and to [NonDeterminism eliminate nondeterminism] in NameNodes.
-This requires UpRight-HDFS NameNode replicas to checkpoint their whole state.  Therefore, a NameNode checkpoint includes all soft state and others, such as mappings from block ID to DataNodes, in addition to namespace information.
-Furthermore, in UpRight-HDFS NameNode, a log is managed by the UpRight Server Library hence logging
-operations provided by the original HDFS is disabled.
+We seek to minimize changes to the existing HDFS codebase.
+As in the original HDFS system, UpRight-HDFS employs a [ProgrammingWithUpRight Primary-Helper approach] to generate checkpoints.  Also, in order to adapt to the UpRight framework, HDFS NameNode is modified to implement [InterfaceSpecification the interface exposed by the UpRight Server Library] and to [NonDeterminism eliminate nondeterminism] in NameNodes.
+This requires UpRight-HDFS NameNode replicas to checkpoint their whole state.  Therefore, a NameNode checkpoint includes all soft state in addition to namespace information.
+Furthermore, in UpRight-HDFS NameNode, a log is managed by the UpRight Server Library, hence logging
+operations provided by the original HDFS are disabled.
 
 == DataNodes and Clients ==
 Both DataNodes and HDFS clients are UpRight clients and any requests from them to NameNode should be sent through UpRight Client Library.  Therefore, on each machine on which DataNode or/and HDFS clients run, the UpRight client proxy runs as well.  The proxy includes the UpRight Client Library and exposes a same interface as one that exposed by HDFS NameNode.  DataNode and HDFS clients on the machine send their requests for NameNode to the proxy as if they were sending to the NameNode directly.
 
 = UpRight-HDFS DataNode =
-The HDFS can tolerate some failures on Datanodes but not all Byzantine failures.
+In addition to providing a highly available NameNode, [http://www.sigops.org/sosp/sosp09/papers/clement-sosp09.pdf the UpRight paper] explores a broader range of Byzantine fault tolerance including modifying the HDFS DataNode to ensure full end-to-end Byzantine fault tolerance.
+This optional feature can be enabled or disabled in our prototype.
+
+HDFS can tolerate some DataNode failures but not all Byzantine failures.
 For example, if a DataNode suffers a fault that corrupts a disk block but not the corresponding checksum, then a client would detect the error and reject the data, but if a faulty DataNode returns the wrong block and also returns the checksum for that wrong block, a client would accept the wrong result as correct.  UpRight-HDFS DataNode can tolerate more kinds of failures including Byzantine failures.
 
 UpRight-HDFS DataNode do not employ a state machine replication approach mainly for preserving many policies of the original HDFS, such as where/how to put data blocks and how to read blocks.  Instead, UpRight-HDFS DataNode makes a few simple changes to the existing DataNode.  The main changes are 
