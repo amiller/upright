@@ -10,7 +10,7 @@
   Most existing crash failure mechanisms assume the fail/stop model, in which if the server fails, it stops to respond. In reality, we see many cases in which a failed server gives incorrect response instead of just halting. The traditional crash failure mechanism cannot handle this kind of Byzantine Faults. UpRight can provide Byzantine Fault Tolerance for the application automatically.
 
   * What is the cost of UpRight?
-  To tolerate u failures, among which r failures are Byzantine (assuming u>r), the whole system requires 2u+1 server replicas, 2u+r+1 order nodes and 2u+r+1 filter nodes (optional for performance improvement). 
+  To tolerate u failures, among which r failures are Byzantine, the whole system requires u+max(u,r)+1 server replicas, 2u+r+1 order nodes and u+r+max(u,r)+1 filter nodes (optional for performance improvement). 
 
   * How should I install UpRight?
   See [UpRightInstall Installation Guide]
