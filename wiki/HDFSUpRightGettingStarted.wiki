@@ -1,7 +1,7 @@
 #summary How to configure and run UpRight-HDFS
 
 = Download =
-You need to donwload both the [http://upright.googlecode.com/files/upright.tar.gz UpRight library] and the [http://upright.googlecode.com/files/hdfs-upright-0.1.tar.gz HDFS-UpRight].
+You need to donwload both the [http://upright.googlecode.com/files/upright.tar.gz UpRight library] and the [http://upright.googlecode.com/files/hdfs-upright-0.1.tar.gz UpRight-HDFS].
 
 = Configuration =
 
