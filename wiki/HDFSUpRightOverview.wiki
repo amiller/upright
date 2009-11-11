@@ -11,6 +11,10 @@ Later, when the crashed node recovers, UpRight-HDFS automatically brings its sta
 We report on our experience with UpRight-HDFS in a [http://www.sigops.org/sosp/sosp09/papers/clement-sosp09.pdf paper].
 In summary, performance is quite good.
 
+[http://www.cs.utexas.edu/~sangmin/UpRight-HDFS-u1r0_640x480.jpg]
+
+
+
 == NameNodes ==
 We seek to minimize changes to the existing HDFS codebase.
 As in the original HDFS system, UpRight-HDFS employs a [ProgrammingWithUpRight Primary-Helper approach] to generate checkpoints.  Also, in order to adapt to the UpRight framework, HDFS NameNode is modified to implement [InterfaceSpecification the interface exposed by the UpRight Server Library] and to [NonDeterminism eliminate nondeterminism] in NameNodes.
