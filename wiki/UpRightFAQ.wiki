@@ -28,4 +28,4 @@
   See [NonDeterminism common sources of nondetermism and how to elimate it]
 
   * My UpRight program does not run correctly. What is the problem?
-  Nondeterminisms, especially in checkpoint and recovery, are the most common causes of problems in our experience. If your system stops progressing without any exceptions, it probably means that the states diverge on different replicas. You can check the hash of checkpoint on different replicas in the log files. If you have further problems, you can email your log and exceptions to us.
+  Nondeterminisms, especially in checkpoint and recovery, are the most common causes of problems in our experience. You can check the logs for that. If you have further problems, you can email your logs and exceptions to us.
