@@ -181,7 +181,6 @@ public class HTClient{
                 System.out.println("value="+data.getValue());
                 System.out.println("random="+data.getRandom());
                 System.out.println("timestamp="+data.getTimestamp());
-                System.exit(0);
         }
 }
 }}}
