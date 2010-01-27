@@ -211,7 +211,9 @@ public class BftPrimaryGlue implements AppCPInterface {
 		} catch (Throwable e){
 			error = true;
 			errorClass = e.getClass().getName();
-			errorStr = StringUtils.stringifyException(e);
+			errorStr = canonicalizeExceptionStackTraceString(StringUtils.stringifyException(e));
+			LOG.debug("errorClass: " + errorClass);
+			LOG.debug("errorString: " + errorStr);
 		}
 
 		// create the reply
@@ -224,6 +226,15 @@ public class BftPrimaryGlue implements AppCPInterface {
 		}
 		return rep.toBytes();
 				
+	}
+	
+	// This is temporary(ad-hoc) fix
+	// StackTrace for some exception may include methods whose names are
+	// decided in a nondeterministic way (at least, I don't know how for now) 
+	private String canonicalizeExceptionStackTraceString(String exception){
+		String ret = exception;
+		ret = ret.replaceAll("GeneratedMethodAccessor[0-9]+", "GeneratedMethodAccessor");
+		return ret;
 	}
 
 	@Override

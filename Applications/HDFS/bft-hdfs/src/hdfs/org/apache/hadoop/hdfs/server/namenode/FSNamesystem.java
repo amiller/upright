@@ -1371,9 +1371,12 @@ public class FSNamesystem implements FSConstants, FSNamesystemMBean {
 	  if (iFile != null && iFile.isUnderConstruction()) {
 		  fileBlocks =  dir.getFileBlocks(src);
 	  } else {
-		  System.out.println("!!! This must not happen!!");
-		  System.exit(-1);
-		  return;
+		  LOG.info("INode is missing for " + src);
+		  fileBlocks =  dir.getFileBlocks(src);
+		  if(fileBlocks == null) return;
+//		  System.out.println("!!! This must not happen!!");
+//		  System.exit(-1);
+//		  return;
 	  }
 
 	  if(fileBlocks.length <= 0){
@@ -3794,7 +3797,13 @@ public class FSNamesystem implements FSConstants, FSNamesystemMBean {
     	// Check hash of the block
     	//
 
-    	byte[] hash = blocksMap.getStoredBlock(block).getHash();
+    	BlockInfo bi = blocksMap.getStoredBlock(block);
+    	if(bi==null){
+    		// the block has been deleted already
+    		invalidateBlock(block, node);
+    		return;
+    	}
+    	byte[] hash = bi.getHash();
     	if( hash != null ){
     		// NN already knows that there are enough DNs who agreed on this hash
     		// for the block.  Hence if this hash matches, just accept this block
