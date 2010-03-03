@@ -8,7 +8,7 @@
   # Dynamic server membership
   # Update MAC/signatures (replace MACs over time, related to dynamic membership above)
   # Support multiple outstanding requests per client
-  # Support larger numbers of clietns (currently cap around 512 due to socket issues)
+  # Support larger numbers of clients (currently cap around 512 due to socket issues)
 
 
 = Known Issues =
@@ -21,5 +21,4 @@
     * Does not work with r < u
   # Stable storage
     * We currently record to stable storage everywhere
-    * We do not currently read from stable storage at the order/filter nodes.
   # Kill/restart server experiment fails for readonly workload.
