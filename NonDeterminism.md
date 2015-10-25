@@ -1,0 +1,7 @@
+  * Random number: if the application needs random number, it is possibly a source of nondeterminism. UpRight provides a random number with each request and the application server should use this number instead of using the Java Random class. This number can be retrieved from RequestInfo.getRandom().
+
+  * Time: time is also a common source of nondeterminism, since it is difficult to accurately synchronize the time of different machines. Similar as random number, UpRight provides a timestamp with each request. This timestamp can be retrieved from RequestInfo.getTime(). The application should use this timestamp instead of System.currentTimeMillis(), etc.
+
+  * Multi thread: modifying and reading data concurrently also causes nondeterminisms. We do not have any general solutions for this now. The simplest answer is to "use single thread model", but of course this limits the concurrency of the system. We're currently working on more efficient solutions for this problem. You can also try it by yourself. Any suggestions about this problem are welcome.
+
+  * Nondeterministic data structure: some common data structures have internal nondeterminisms. E.g., the iteration of hashtable/hashset in Java is nondeterministic, so if you want to write a hashtable to checkpoint, it will cause nondeterminisms. Please use the determistic version of these data structures, e.g, LinkedHashSet. This will cause some extra overhead but will simply eliminate such nondeterminisms.
