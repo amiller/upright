@@ -56,6 +56,10 @@ public class NettyTCPNetwork implements ConcurrentNetwork {
     private NetworkWorkQueue NWQ;
 
     public NettyTCPNetwork(Role role, Membership members, NetworkWorkQueue nwq) {
+	this(role, members, nwq, false);
+    }
+
+    public NettyTCPNetwork(Role role, Membership members, NetworkWorkQueue nwq, boolean add500) {
 	myRole = role;
 	membership = members;
     NWQ = nwq;
@@ -102,9 +106,15 @@ public class NettyTCPNetwork implements ConcurrentNetwork {
 		//this.serverChannels[i] = ServerSocketChannel.open();
 		//this.serverChannels[i].configureBlocking(false);
 
-		// Bind the server socket to the specified address and port
-		InetSocketAddress isa = new InetSocketAddress(InetAddress.getByName(ipStr), Integer.parseInt(portStr));
-		System.err.println("Opening to "+ipStr+" "+portStr);
+		// Bind the server socket to the specified address and por
+
+		int port = Integer.parseInt(portStr);
+		if (true && add500) {
+		    //System.out.println("[amiller hack!]: adding 500 to port for attacker scheduling");
+		    port += 500;
+		}
+		InetSocketAddress isa = new InetSocketAddress(InetAddress.getByName(ipStr), port);
+		System.err.println("Opening to "+ipStr+" "+port);
         //Pair<Role,Integer> pair = getRoleFromIndex(i);
 		ServerHandler handler = new ServerHandler(role, i, NWQ);
 		MessageDecoder decoder = new MessageDecoder(role , i);

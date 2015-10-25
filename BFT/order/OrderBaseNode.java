@@ -3348,12 +3348,12 @@ public class OrderBaseNode extends BaseNode{
 	owq.setOrderBaseNode(osn);
 	osn.init();
 	//NetworkWorkQueue nwq = new NetworkWorkQueue();
-	NettyTCPNetwork orderNet = new NettyTCPNetwork(Role.ORDER, osn.getMembership(), owq);
+	NettyTCPNetwork orderNet = new NettyTCPNetwork(Role.ORDER, osn.getMembership(), owq, true);
 	osn.setNetwork(orderNet);
 	//netty//net.start();
 	//netty//Listener lo = new Listener(net, owq);
 
-	NettyTCPNetwork execNet = new NettyTCPNetwork(Role.EXEC, osn.getMembership(), owq);
+	NettyTCPNetwork execNet = new NettyTCPNetwork(Role.EXEC, osn.getMembership(), owq, true);
 	osn.setNetwork(execNet);
 	//netty//net.start();
 	//netty//nListener le = new Listener(net, owq);
@@ -3368,9 +3368,9 @@ public class OrderBaseNode extends BaseNode{
 	CleanerWorkQueue cwq = new CleanerWorkQueue();
 	NettyTCPNetwork clientNet;
 	if (!Parameters.filtered)
-	    clientNet = new NettyTCPNetwork(Role.CLIENT, osn.getMembership(), cwq);
+	    clientNet = new NettyTCPNetwork(Role.CLIENT, osn.getMembership(), cwq, true);
 	else
-	    clientNet = new NettyTCPNetwork(Role.FILTER, osn.getMembership(), cwq);
+	    clientNet = new NettyTCPNetwork(Role.FILTER, osn.getMembership(), cwq, true);
 	osn.setNetwork(clientNet);
 	//netty//net.start();
 	//netty//Listener lc = new Listener(net, cwq);
