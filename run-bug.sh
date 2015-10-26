@@ -16,7 +16,7 @@
 # +-----------------------------------+ 
 #
 
-export JAVA_OPTS="-Djava.library.path=. -cp conf:bft.jar:FlexiCoreProvider-1.6p3.signed.jar:CoDec-build17-jdk13.jar:netty-3.1.4.GA.jar"
+export JAVA_OPTS="-cp conf:dist/lib/bft.jar:lib/FlexiCoreProvider-1.6p3.signed.jar:lib/CoDec-build17-jdk13.jar:lib/netty-3.1.4.GA.jar"
 
 echo java ${JAVA_OPTS} BFT.order.OrderBaseNode 0 config.properties
 tmux new-session    'sleep 2; java ${JAVA_OPTS} BFT.order.OrderBaseNode 0 config.properties; bash' \;  \
