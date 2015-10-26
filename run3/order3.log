@@ -1,0 +1,78 @@
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: false
+fair: false
+filter:0+0=0
+order: 4
+exec:  3
+filter:  0
+order: 4
+creating order basenode
+reading cp files
+root directory /home/amiller/installing/upright-read-only
+found 1 files with suffix: _3_ORDER_CP.LOG
+found brand new cp at: 0
+wtf
+retransmitting: 2 for client 0
+process last executed 2 from 0
+current seqno: 2 base: 0
+process last executed 2 from 1
+current seqno: 2 base: 0
+process last executed 2 from 2
+current seqno: 2 base: 0
+retransmitting: 2 for client 0
+process last executed 2 from 0
+current seqno: 2 base: 0
+process last executed 2 from 2
+current seqno: 2 base: 0
+process last executed 2 from 1
+current seqno: 2 base: 0
+retransmitting: 2 for client 0
+process last executed 2 from 2
+current seqno: 2 base: 0
+process last executed 2 from 1
+current seqno: 2 base: 0
+process last executed 2 from 0
+current seqno: 2 base: 0
+retransmitting: 4 for client 0
+retransmitting: 4 for client 0
+process last executed 4 from 0
+current seqno: 4 base: 0
+process last executed 4 from 1
+current seqno: 4 base: 0
+process last executed 4 from 2
+current seqno: 4 base: 0
+retransmitting: 4 for client 0
+process last executed 4 from 0
+current seqno: 4 base: 0
+process last executed 4 from 2
+current seqno: 4 base: 0
+process last executed 4 from 1
+current seqno: 4 base: 0
+retransmitting: 6 for client 0
+retransmitting: 6 for client 0
+process last executed 6 from 0
+current seqno: 6 base: 0
+process last executed 6 from 1
+current seqno: 6 base: 0
+process last executed 6 from 2
+current seqno: 6 base: 0
+retransmitting: 6 for client 0
+process last executed 6 from 0
+current seqno: 6 base: 0
+process last executed 6 from 1
+current seqno: 6 base: 0
+process last executed 6 from 2
+current seqno: 6 base: 0
+retransmitting: 8 for client 0
+retransmitting: 8 for client 0
+process last executed 8 from 1
+current seqno: 8 base: 0
+process last executed 8 from 2
+current seqno: 8 base: 0
+process last executed 8 from 0
+current seqno: 8 base: 0
+retransmitting: 8 for client 0

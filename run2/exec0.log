@@ -1,0 +1,153 @@
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: false
+fair: false
+filter:0+0=0
+order: 4
+exec:  3
+filter:  0
+order: 4
+StartTime=1445901241305
+ExecThread created Thread[Thread-4,5,main]
+wtf
+started at : 1445901241374
+spontaneously sending CPtoken to all order nodes
+Failed on connection to ORDER.0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.2
+Failed on connection to ORDER.3
+Process Request CP from 2
+	 sending cp back: 0
+Process Request CP from 1
+	 sending cp back: 0
+Process Request CP from 0
+	 sending cp back: 0
+Process Request CP from 3
+	 sending cp back: 0
+Last exectued at : 1445901247128
+sending last exected with 2
+Failed on write to  CLIENT.0
+Last exectued at : 1445901250127
+sending last exected with 2
+Last exectued at : 1445901254128
+sending last exected with 2
+Failed on write to  CLIENT.0
+Last exectued at : 1445901258948
+sending last exected with 4
+Last exectued at : 1445901262948
+sending last exected with 4
+Failed on write to  CLIENT.0
+Last exectued at : 1445901267769
+sending last exected with 6
+Last exectued at : 1445901271769
+sending last exected with 6
+Failed on write to  CLIENT.0
+Last exectued at : 1445901276574
+sending last exected with 8
+Last exectued at : 1445901280575
+sending last exected with 8
+Failed on write to  ORDER.1
+Last exectued at : 1445901284591
+sending last exected with 8
+Failed on connection to ORDER.1
+Last exectued at : 1445901288601
+sending last exected with 9
+Failed on connection to ORDER.1
+Failed on write to  CLIENT.0
+Last exectued at : 1445901293386
+sending last exected with 10
+Failed on connection to ORDER.1
+Last exectued at : 1445901297388
+sending last exected with 10
+Failed on connection to ORDER.1
+Last exectued at : 1445901301406
+sending last exected with 10
+Failed on connection to ORDER.1
+Last exectued at : 1445901305421
+sending last exected with 11
+Failed on connection to ORDER.1
+Failed on write to  CLIENT.0
+Last exectued at : 1445901310205
+sending last exected with 12
+Failed on connection to ORDER.1
+Last exectued at : 1445901314206
+sending last exected with 12
+Failed on connection to ORDER.1
+Last exectued at : 1445901318224
+sending last exected with 12
+Failed on connection to ORDER.1
+Last exectued at : 1445901322239
+sending last exected with 13
+Failed on connection to ORDER.1
+Failed on write to  CLIENT.0
+Last exectued at : 1445901327030
+sending last exected with 14
+Failed on connection to ORDER.1
+Last exectued at : 1445901331031
+sending last exected with 14
+Failed on connection to ORDER.1
+Last exectued at : 1445901335048
+sending last exected with 14
+Failed on connection to ORDER.1
+Last exectued at : 1445901339061
+sending last exected with 15
+Failed on connection to ORDER.1
+Failed on write to  CLIENT.0
+Last exectued at : 1445901343851
+sending last exected with 16
+Failed on connection to ORDER.1
+Last exectued at : 1445901347852
+sending last exected with 16
+Failed on connection to ORDER.1
+Last exectued at : 1445901351870
+sending last exected with 16
+Failed on connection to ORDER.1
+Last exectued at : 1445901355882
+sending last exected with 17
+Failed on connection to ORDER.1
+Failed on write to  CLIENT.0
+Last exectued at : 1445901360670
+sending last exected with 18
+Failed on connection to ORDER.1
+Last exectued at : 1445901364671
+sending last exected with 18
+Failed on connection to ORDER.1
+Last exectued at : 1445901368689
+sending last exected with 18
+Failed on connection to ORDER.1
+Last exectued at : 1445901372706
+sending last exected with 19
+Failed on connection to ORDER.1
+Failed on write to  CLIENT.0
+Last exectued at : 1445901377496
+sending last exected with 20
+Failed on connection to ORDER.1
+Last exectued at : 1445901381498
+sending last exected with 20
+Failed on connection to ORDER.1
+Last exectued at : 1445901385514
+sending last exected with 20
+Failed on connection to ORDER.1
+Last exectued at : 1445901389528
+sending last exected with 21
+Failed on connection to ORDER.1
+Failed on write to  CLIENT.0
+Last exectued at : 1445901394320
+sending last exected with 22
+Failed on connection to ORDER.1
+Last exectued at : 1445901398321
+sending last exected with 22
+Failed on connection to ORDER.1
+Last exectued at : 1445901402337
+sending last exected with 22
+Failed on connection to ORDER.1
+Last exectued at : 1445901406354
+sending last exected with 23
+Failed on connection to ORDER.1
+Failed on write to  CLIENT.0
+Last exectued at : 1445901411148
+sending last exected with 24
+Failed on connection to ORDER.1

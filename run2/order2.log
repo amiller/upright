@@ -1,0 +1,341 @@
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: false
+fair: false
+filter:0+0=0
+order: 4
+exec:  3
+filter:  0
+order: 4
+creating order basenode
+reading cp files
+root directory /home/amiller/installing/upright-read-only
+found 1 files with suffix: _2_ORDER_CP.LOG
+found brand new cp at: 0
+wtf
+retransmitting: 2 for client 0
+process last executed 2 from 0
+current seqno: 2 base: 0
+process last executed 2 from 1
+current seqno: 2 base: 0
+process last executed 2 from 2
+current seqno: 2 base: 0
+retransmitting: 2 for client 0
+process last executed 2 from 0
+current seqno: 2 base: 0
+process last executed 2 from 2
+current seqno: 2 base: 0
+process last executed 2 from 1
+current seqno: 2 base: 0
+retransmitting: 2 for client 0
+process last executed 2 from 0
+current seqno: 2 base: 0
+process last executed 2 from 1
+current seqno: 2 base: 0
+process last executed 2 from 2
+current seqno: 2 base: 0
+retransmitting: 4 for client 0
+retransmitting: 4 for client 0
+process last executed 4 from 2
+current seqno: 4 base: 0
+process last executed 4 from 0
+current seqno: 4 base: 0
+process last executed 4 from 1
+current seqno: 4 base: 0
+retransmitting: 4 for client 0
+process last executed 4 from 2
+current seqno: 4 base: 0
+process last executed 4 from 1
+current seqno: 4 base: 0
+process last executed 4 from 0
+current seqno: 4 base: 0
+retransmitting: 6 for client 0
+retransmitting: 6 for client 0
+process last executed 6 from 1
+current seqno: 6 base: 0
+process last executed 6 from 2
+current seqno: 6 base: 0
+process last executed 6 from 0
+current seqno: 6 base: 0
+retransmitting: 6 for client 0
+process last executed 6 from 1
+current seqno: 6 base: 0
+process last executed 6 from 0
+current seqno: 6 base: 0
+process last executed 6 from 2
+current seqno: 6 base: 0
+retransmitting: 8 for client 0
+retransmitting: 8 for client 0
+process last executed 8 from 0
+current seqno: 8 base: 0
+process last executed 8 from 1
+current seqno: 8 base: 0
+process last executed 8 from 2
+current seqno: 8 base: 0
+retransmitting: 8 for client 0
+process last executed 8 from 0
+current seqno: 8 base: 0
+process last executed 8 from 1
+current seqno: 8 base: 0
+process last executed 8 from 2
+current seqno: 8 base: 0
+retransmitting: 9 for client 0
+Failed on write to  ORDER.1
+process last executed 8 from 0
+current seqno: 9 base: 0
+process last executed 8 from 1
+current seqno: 9 base: 0
+process last executed 8 from 2
+current seqno: 9 base: 0
+retransmitting: 10 for client 0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.1
+process last executed 9 from 0
+current seqno: 10 base: 0
+process last executed 9 from 1
+current seqno: 10 base: 0
+process last executed 9 from 2
+current seqno: 10 base: 0
+retransmitting: 10 for client 0
+retransmitting: 10 for client 0
+process last executed 10 from 0
+current seqno: 10 base: 0
+process last executed 10 from 1
+current seqno: 10 base: 0
+process last executed 10 from 2
+current seqno: 10 base: 0
+retransmitting: 10 for client 0
+process last executed 10 from 1
+current seqno: 10 base: 0
+process last executed 10 from 0
+current seqno: 10 base: 0
+process last executed 10 from 2
+current seqno: 10 base: 0
+retransmitting: 11 for client 0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.1
+process last executed 10 from 0
+current seqno: 11 base: 0
+process last executed 10 from 1
+current seqno: 11 base: 0
+process last executed 10 from 2
+current seqno: 11 base: 0
+retransmitting: 12 for client 0
+Failed on connection to ORDER.1
+process last executed 11 from 2
+current seqno: 12 base: 0
+Failed on connection to ORDER.1
+process last executed 11 from 0
+current seqno: 12 base: 0
+process last executed 11 from 1
+current seqno: 12 base: 0
+retransmitting: 12 for client 0
+retransmitting: 12 for client 0
+process last executed 12 from 0
+current seqno: 12 base: 0
+process last executed 12 from 1
+current seqno: 12 base: 0
+process last executed 12 from 2
+current seqno: 12 base: 0
+retransmitting: 12 for client 0
+process last executed 12 from 0
+current seqno: 12 base: 0
+process last executed 12 from 1
+current seqno: 12 base: 0
+process last executed 12 from 2
+current seqno: 12 base: 0
+retransmitting: 13 for client 0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.1
+process last executed 12 from 1
+current seqno: 13 base: 0
+process last executed 12 from 2
+current seqno: 13 base: 0
+process last executed 12 from 0
+current seqno: 13 base: 0
+retransmitting: 14 for client 0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.1
+process last executed 13 from 1
+current seqno: 14 base: 0
+process last executed 13 from 2
+current seqno: 14 base: 0
+process last executed 13 from 0
+current seqno: 14 base: 0
+retransmitting: 14 for client 0
+retransmitting: 14 for client 0
+retransmitting: 14 for client 0
+process last executed 14 from 1
+current seqno: 14 base: 0
+process last executed 14 from 2
+current seqno: 14 base: 0
+process last executed 14 from 0
+current seqno: 14 base: 0
+retransmitting: 14 for client 0
+process last executed 14 from 1
+current seqno: 14 base: 0
+process last executed 14 from 2
+current seqno: 14 base: 0
+process last executed 14 from 0
+current seqno: 14 base: 0
+retransmitting: 15 for client 0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.1
+process last executed 14 from 1
+current seqno: 15 base: 0
+process last executed 14 from 2
+current seqno: 15 base: 0
+process last executed 14 from 0
+current seqno: 15 base: 0
+retransmitting: 16 for client 0
+Failed on connection to ORDER.1
+process last executed 15 from 2
+current seqno: 16 base: 0
+process last executed 15 from 0
+current seqno: 16 base: 0
+process last executed 15 from 1
+current seqno: 16 base: 0
+Failed on connection to ORDER.1
+retransmitting: 16 for client 0
+retransmitting: 16 for client 0
+process last executed 16 from 0
+current seqno: 16 base: 0
+process last executed 16 from 1
+current seqno: 16 base: 0
+process last executed 16 from 2
+current seqno: 16 base: 0
+retransmitting: 16 for client 0
+process last executed 16 from 0
+current seqno: 16 base: 0
+process last executed 16 from 1
+current seqno: 16 base: 0
+process last executed 16 from 2
+current seqno: 16 base: 0
+retransmitting: 17 for client 0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.1
+process last executed 16 from 0
+current seqno: 17 base: 0
+process last executed 16 from 1
+current seqno: 17 base: 0
+process last executed 16 from 2
+current seqno: 17 base: 0
+retransmitting: 18 for client 0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.1
+process last executed 17 from 0
+current seqno: 18 base: 0
+process last executed 17 from 1
+current seqno: 18 base: 0
+process last executed 17 from 2
+current seqno: 18 base: 0
+retransmitting: 18 for client 0
+retransmitting: 18 for client 0
+process last executed 18 from 0
+current seqno: 18 base: 0
+process last executed 18 from 1
+current seqno: 18 base: 0
+process last executed 18 from 2
+current seqno: 18 base: 0
+retransmitting: 18 for client 0
+process last executed 18 from 1
+current seqno: 18 base: 0
+process last executed 18 from 2
+current seqno: 18 base: 0
+process last executed 18 from 0
+current seqno: 18 base: 0
+retransmitting: 19 for client 0
+Failed on connection to ORDER.1
+process last executed 18 from 1
+current seqno: 19 base: 0
+process last executed 18 from 2
+current seqno: 19 base: 0
+Failed on connection to ORDER.1
+process last executed 18 from 0
+current seqno: 19 base: 0
+retransmitting: 20 for client 0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.1
+process last executed 19 from 1
+current seqno: 20 base: 0
+process last executed 19 from 2
+current seqno: 20 base: 0
+process last executed 19 from 0
+current seqno: 20 base: 0
+retransmitting: 20 for client 0
+retransmitting: 20 for client 0
+process last executed 20 from 1
+current seqno: 20 base: 0
+process last executed 20 from 0
+current seqno: 20 base: 0
+process last executed 20 from 2
+current seqno: 20 base: 0
+retransmitting: 20 for client 0
+process last executed 20 from 1
+current seqno: 20 base: 0
+process last executed 20 from 2
+current seqno: 20 base: 0
+process last executed 20 from 0
+current seqno: 20 base: 0
+retransmitting: 21 for client 0
+Failed on connection to ORDER.1
+process last executed 20 from 1
+current seqno: 21 base: 0
+process last executed 20 from 2
+current seqno: 21 base: 0
+Failed on connection to ORDER.1
+process last executed 20 from 0
+current seqno: 21 base: 0
+retransmitting: 22 for client 0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.1
+process last executed 21 from 1
+current seqno: 22 base: 0
+process last executed 21 from 2
+current seqno: 22 base: 0
+process last executed 21 from 0
+current seqno: 22 base: 0
+retransmitting: 22 for client 0
+retransmitting: 22 for client 0
+process last executed 22 from 2
+current seqno: 22 base: 0
+process last executed 22 from 0
+current seqno: 22 base: 0
+process last executed 22 from 1
+current seqno: 22 base: 0
+retransmitting: 22 for client 0
+process last executed 22 from 1
+current seqno: 22 base: 0
+process last executed 22 from 2
+current seqno: 22 base: 0
+process last executed 22 from 0
+current seqno: 22 base: 0
+retransmitting: 23 for client 0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.1
+process last executed 22 from 0
+current seqno: 23 base: 0
+process last executed 22 from 1
+current seqno: 23 base: 0
+process last executed 22 from 2
+current seqno: 23 base: 0
+retransmitting: 24 for client 0
+Failed on connection to ORDER.1
+process last executed 23 from 1
+current seqno: 24 base: 0
+process last executed 23 from 2
+current seqno: 24 base: 0
+process last executed 23 from 0
+current seqno: 24 base: 0
+Failed on connection to ORDER.1
+retransmitting: 24 for client 0
+retransmitting: 24 for client 0
+process last executed 24 from 1
+current seqno: 24 base: 0
+process last executed 24 from 0
+current seqno: 24 base: 0
+process last executed 24 from 2
+current seqno: 24 base: 0

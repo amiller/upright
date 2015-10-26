@@ -1,0 +1,72 @@
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: false
+fair: false
+filter:0+0=0
+order: 4
+exec:  3
+filter:  0
+order: 4
+value=1
+random=-1569261800195799342
+timestamp=1445901431102
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: false
+fair: false
+filter:0+0=0
+order: 4
+exec:  3
+filter:  0
+order: 4
+value=1
+random=-1565956829467463790
+timestamp=1445901439944
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: false
+fair: false
+filter:0+0=0
+order: 4
+exec:  3
+filter:  0
+order: 4
+value=1
+random=-1575871737357503151
+timestamp=1445901448764
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: false
+fair: false
+filter:0+0=0
+order: 4
+exec:  3
+filter:  0
+order: 4
+value=1
+random=-1572566770924134895
+timestamp=1445901457579
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: false
+fair: false
+filter:0+0=0
+order: 4
+exec:  3
+filter:  0
+order: 4

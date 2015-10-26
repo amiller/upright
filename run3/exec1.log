@@ -1,0 +1,49 @@
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: false
+fair: false
+filter:0+0=0
+order: 4
+exec:  3
+filter:  0
+order: 4
+StartTime=1445901427160
+ExecThread created Thread[Thread-4,5,main]
+wtf
+started at : 1445901427229
+spontaneously sending CPtoken to all order nodes
+Failed on connection to ORDER.0
+Failed on connection to ORDER.1
+Failed on connection to ORDER.2
+Failed on connection to ORDER.3
+Process Request CP from 0
+	 sending cp back: 0
+Process Request CP from 1
+	 sending cp back: 0
+Process Request CP from 3
+	 sending cp back: 0
+Process Request CP from 2
+	 sending cp back: 0
+Last exectued at : 1445901432927
+sending last exected with 2
+Failed on write to  CLIENT.0
+Last exectued at : 1445901435927
+sending last exected with 2
+Last exectued at : 1445901439927
+sending last exected with 2
+Failed on write to  CLIENT.0
+Last exectued at : 1445901444748
+sending last exected with 4
+Last exectued at : 1445901448748
+sending last exected with 4
+Failed on write to  CLIENT.0
+Last exectued at : 1445901453562
+sending last exected with 6
+Last exectued at : 1445901457562
+sending last exected with 6
+Failed on write to  CLIENT.0
+Last exectued at : 1445901460377
+sending last exected with 8
