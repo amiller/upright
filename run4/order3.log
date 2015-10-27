@@ -17,84 +17,47 @@ found 1 files with suffix: _3_ORDER_CP.LOG
 found brand new cp at: 0
 wtf
 retransmitting: 2 for client 0
-process last executed 2 from 0
-current seqno: 2 base: 0
 process last executed 2 from 1
 current seqno: 2 base: 0
 process last executed 2 from 2
+current seqno: 2 base: 0
+process last executed 2 from 0
 current seqno: 2 base: 0
 retransmitting: 2 for client 0
 process last executed 2 from 0
 current seqno: 2 base: 0
-process last executed 2 from 1
-current seqno: 2 base: 0
 process last executed 2 from 2
+current seqno: 2 base: 0
+process last executed 2 from 1
 current seqno: 2 base: 0
 retransmitting: 2 for client 0
-process last executed 2 from 1
-current seqno: 2 base: 0
 process last executed 2 from 2
+current seqno: 2 base: 0
+process last executed 2 from 1
 current seqno: 2 base: 0
 process last executed 2 from 0
 current seqno: 2 base: 0
 retransmitting: 4 for client 0
 retransmitting: 4 for client 0
-retransmitting: 4 for client 0
-process last executed 4 from 0
+process last executed 4 from 2
 current seqno: 4 base: 0
 process last executed 4 from 1
 current seqno: 4 base: 0
-process last executed 4 from 2
-current seqno: 4 base: 0
-retransmitting: 4 for client 0
 process last executed 4 from 0
 current seqno: 4 base: 0
-process last executed 4 from 1
-current seqno: 4 base: 0
-process last executed 4 from 2
-current seqno: 4 base: 0
+retransmitting: 4 for client 0
 retransmitting: 6 for client 0
-retransmitting: 6 for client 0
-process last executed 6 from 0
-current seqno: 6 base: 0
 process last executed 6 from 1
 current seqno: 6 base: 0
 process last executed 6 from 2
 current seqno: 6 base: 0
-retransmitting: 6 for client 0
 process last executed 6 from 0
 current seqno: 6 base: 0
+retransmitting: 6 for client 0
+retransmitting: 6 for client 0
 process last executed 6 from 1
 current seqno: 6 base: 0
 process last executed 6 from 2
 current seqno: 6 base: 0
-retransmitting: 8 for client 0
-retransmitting: 8 for client 0
-process last executed 8 from 0
-current seqno: 8 base: 0
-process last executed 8 from 2
-current seqno: 8 base: 0
-process last executed 8 from 1
-current seqno: 8 base: 0
-retransmitting: 8 for client 0
-retransmitting: 10 for client 0
-process last executed 10 from 0
-current seqno: 10 base: 0
-process last executed 10 from 1
-current seqno: 10 base: 0
-process last executed 10 from 2
-current seqno: 10 base: 0
-retransmitting: 10 for client 0
-process last executed 10 from 1
-current seqno: 10 base: 0
-process last executed 10 from 2
-current seqno: 10 base: 0
-process last executed 10 from 0
-current seqno: 10 base: 0
-retransmitting: 10 for client 0
-process last executed 10 from 1
-current seqno: 10 base: 0
-process last executed 10 from 2
-current seqno: 10 base: 0
-process last executed 10 from 0
-current seqno: 10 base: 0
+process last executed 6 from 0
+current seqno: 6 base: 0

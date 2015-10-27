@@ -1,0 +1,44 @@
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: false
+filtered: true
+fair: false
+filter:0+0=1
+order: 4
+exec:  3
+filter:  1
+order: 4
+Failed on write to  ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
+Failed on connection to ORDER.0
