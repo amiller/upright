@@ -1,0 +1,152 @@
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: true
+fair: false
+filter:0+0=1
+order: 1
+exec:  1
+filter:  1
+order: 1
+creating order basenode
+reading cp files
+root directory /home/amiller/installing/upright-read-only
+found 1 files with suffix: _0_ORDER_CP.LOG
+found brand new cp at: 0
+wtf
+Failed on connection to EXEC.0
+retransmitting: 2 for client 0
+process last executed 2 from 0
+current seqno: 2 base: 0
+retransmitting: 2 for client 0
+retransmitting: 2 for client 0
+process last executed 2 from 0
+current seqno: 2 base: 0
+retransmitting: 4 for client 0
+retransmitting: 4 for client 0
+process last executed 4 from 0
+current seqno: 4 base: 0
+retransmitting: 4 for client 0
+process last executed 4 from 0
+current seqno: 4 base: 0
+retransmitting: 6 for client 0
+retransmitting: 6 for client 0
+process last executed 6 from 0
+current seqno: 6 base: 0
+retransmitting: 6 for client 0
+process last executed 6 from 0
+current seqno: 6 base: 0
+retransmitting: 8 for client 0
+retransmitting: 8 for client 0
+process last executed 8 from 0
+current seqno: 8 base: 0
+retransmitting: 8 for client 0
+retransmitting: 10 for client 0
+process last executed 10 from 0
+current seqno: 10 base: 0
+retransmitting: 10 for client 0
+process last executed 10 from 0
+current seqno: 10 base: 0
+retransmitting: 10 for client 0
+process last executed 10 from 0
+current seqno: 10 base: 0
+retransmitting: 12 for client 0
+retransmitting: 12 for client 0
+process last executed 12 from 0
+current seqno: 12 base: 0
+retransmitting: 12 for client 0
+process last executed 12 from 0
+current seqno: 12 base: 0
+retransmitting: 14 for client 0
+retransmitting: 14 for client 0
+process last executed 14 from 0
+current seqno: 14 base: 0
+retransmitting: 14 for client 0
+process last executed 14 from 0
+current seqno: 14 base: 0
+retransmitting: 16 for client 0
+retransmitting: 16 for client 0
+process last executed 16 from 0
+current seqno: 16 base: 0
+retransmitting: 16 for client 0
+process last executed 16 from 0
+current seqno: 16 base: 0
+retransmitting: 18 for client 0
+retransmitting: 18 for client 0
+process last executed 18 from 0
+current seqno: 18 base: 0
+retransmitting: 18 for client 0
+process last executed 18 from 0
+current seqno: 18 base: 0
+retransmitting: 20 for client 0
+retransmitting: 20 for client 0
+process last executed 20 from 0
+current seqno: 20 base: 0
+retransmitting: 20 for client 0
+retransmitting: 22 for client 0
+process last executed 22 from 0
+current seqno: 22 base: 0
+retransmitting: 22 for client 0
+process last executed 22 from 0
+current seqno: 22 base: 0
+retransmitting: 22 for client 0
+process last executed 22 from 0
+current seqno: 22 base: 0
+retransmitting: 24 for client 0
+retransmitting: 24 for client 0
+process last executed 24 from 0
+current seqno: 24 base: 0
+retransmitting: 24 for client 0
+process last executed 24 from 0
+current seqno: 24 base: 0
+retransmitting: 26 for client 0
+retransmitting: 26 for client 0
+process last executed 26 from 0
+current seqno: 26 base: 0
+retransmitting: 26 for client 0
+process last executed 26 from 0
+current seqno: 26 base: 0
+retransmitting: 28 for client 0
+retransmitting: 28 for client 0
+process last executed 28 from 0
+current seqno: 28 base: 0
+retransmitting: 28 for client 0
+process last executed 28 from 0
+current seqno: 28 base: 0
+retransmitting: 30 for client 0
+retransmitting: 30 for client 0
+process last executed 30 from 0
+current seqno: 30 base: 0
+retransmitting: 30 for client 0
+process last executed 30 from 0
+current seqno: 30 base: 0
+retransmitting: 32 for client 0
+retransmitting: 32 for client 0
+process last executed 32 from 0
+current seqno: 32 base: 0
+retransmitting: 32 for client 0
+process last executed 32 from 0
+current seqno: 32 base: 0
+retransmitting: 34 for client 0
+retransmitting: 34 for client 0
+process last executed 34 from 0
+current seqno: 34 base: 0
+retransmitting: 34 for client 0
+process last executed 34 from 0
+current seqno: 34 base: 0
+retransmitting: 36 for client 0
+retransmitting: 36 for client 0
+process last executed 36 from 0
+current seqno: 36 base: 0
+retransmitting: 36 for client 0
+process last executed 36 from 0
+current seqno: 36 base: 0
+retransmitting: 38 for client 0
+retransmitting: 38 for client 0
+process last executed 38 from 0
+current seqno: 38 base: 0
+retransmitting: 38 for client 0
+process last executed 38 from 0
+current seqno: 38 base: 0

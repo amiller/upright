@@ -1,0 +1,12 @@
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: true
+fair: false
+filter:0+0=1
+order: 1
+exec:  1
+filter:  1
+order: 1

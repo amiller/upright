@@ -1,0 +1,112 @@
+linearizeReads: false
+cheapClients: false
+filterCaching: true
+doLogging: true
+insecure: true
+filtered: true
+fair: false
+filter:0+0=1
+order: 1
+exec:  1
+filter:  1
+order: 1
+StartTime=1445962335349
+ExecThread created Thread[Thread-4,5,main]
+wtf
+started at : 1445962335411
+spontaneously sending CPtoken to all order nodes
+Last exectued at : 1445962341225
+sending last exected with 2
+Failed on write to  CLIENT.0
+Last exectued at : 1445962344224
+sending last exected with 2
+Failed on write to  CLIENT.0
+Last exectued at : 1445962349030
+sending last exected with 4
+Last exectued at : 1445962353030
+sending last exected with 4
+Failed on write to  CLIENT.0
+Last exectued at : 1445962357831
+sending last exected with 6
+Last exectued at : 1445962361831
+sending last exected with 6
+Failed on write to  CLIENT.0
+Last exectued at : 1445962364631
+sending last exected with 8
+Last exectued at : 1445962368449
+sending last exected with 10
+Failed on write to  CLIENT.0
+Last exectued at : 1445962371449
+sending last exected with 10
+Last exectued at : 1445962375450
+sending last exected with 10
+Failed on write to  CLIENT.0
+Last exectued at : 1445962380259
+sending last exected with 12
+Last exectued at : 1445962384260
+sending last exected with 12
+Failed on write to  CLIENT.0
+Last exectued at : 1445962389055
+sending last exected with 14
+Last exectued at : 1445962393055
+sending last exected with 14
+Failed on write to  CLIENT.0
+Last exectued at : 1445962397856
+sending last exected with 16
+Last exectued at : 1445962401856
+sending last exected with 16
+Failed on write to  CLIENT.0
+Last exectued at : 1445962406665
+sending last exected with 18
+Last exectued at : 1445962410665
+sending last exected with 18
+Failed on write to  CLIENT.0
+Last exectued at : 1445962413472
+sending last exected with 20
+Last exectued at : 1445962417273
+sending last exected with 22
+Failed on write to  CLIENT.0
+Last exectued at : 1445962420273
+sending last exected with 22
+Last exectued at : 1445962424273
+sending last exected with 22
+Failed on write to  CLIENT.0
+Last exectued at : 1445962429076
+sending last exected with 24
+Last exectued at : 1445962433076
+sending last exected with 24
+Failed on write to  CLIENT.0
+Last exectued at : 1445962437878
+sending last exected with 26
+Last exectued at : 1445962441878
+sending last exected with 26
+Failed on write to  CLIENT.0
+Last exectued at : 1445962446682
+sending last exected with 28
+Last exectued at : 1445962450682
+sending last exected with 28
+Failed on write to  CLIENT.0
+Last exectued at : 1445962455483
+sending last exected with 30
+Last exectued at : 1445962459483
+sending last exected with 30
+Failed on write to  CLIENT.0
+Last exectued at : 1445962464282
+sending last exected with 32
+Last exectued at : 1445962468282
+sending last exected with 32
+Failed on write to  CLIENT.0
+Last exectued at : 1445962473085
+sending last exected with 34
+Last exectued at : 1445962477085
+sending last exected with 34
+Failed on write to  CLIENT.0
+Last exectued at : 1445962481884
+sending last exected with 36
+Last exectued at : 1445962485884
+sending last exected with 36
+Failed on write to  CLIENT.0
+Last exectued at : 1445962490693
+sending last exected with 38
+Last exectued at : 1445962494693
+sending last exected with 38
